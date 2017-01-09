@@ -1,5 +1,5 @@
 {
-  "name": "create-react-app-with-node-setup",
+  "name": "stocks-market-app",
   "version": "0.0.1",
   "private": true,
   "author": "Arshad Khan <arshdkhn1@gmail.com>",
@@ -14,7 +14,11 @@
     "babel-core": "6.14.0",
     "babel-preset-es2015": "6.14.0",
     "babel-preset-stage-0": "6.5.0",
-    "express": "4.13.3"
+    "body-parser": "^1.15.2",
+    "dotenv": "^4.0.0",
+    "express": "4.13.3",
+    "mongoose": "^4.7.6",
+    "path": "^0.12.7"
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
