@@ -2,3 +2,7 @@ h2 {
   color: white;
   text-align: center;
 }
+
+.highcharts-credits {
+  visibility: hidden;
+}

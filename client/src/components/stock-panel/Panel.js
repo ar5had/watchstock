@@ -4,7 +4,7 @@ import './Panel.css';
 class Panel extends Component {
   render() {
     return (
-      <div id="panel">
+      <div id="panel" className={this.props.classes}>
       </div>
     );
   }
