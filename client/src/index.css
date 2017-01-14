@@ -5,9 +5,16 @@ html * {
 }
 
 body {
-  background: #0f0f0f;
-  padding: 20px 0;
+  background: #242128;
+  margin: 0;
   color: #fff;
   text-align: center;
   font-size: 50px;
+}
+
+#root {
+  background: #2b2833;
+  overflow: auto;
+  margin: 20px;
+  box-shadow: 0 0 20px #212121;
 }

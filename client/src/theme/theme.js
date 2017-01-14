@@ -12,7 +12,7 @@
 export default function setTheme(Highcharts) {
 
   Highcharts.theme = {
-     colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
+     colors: ['#8c3298', '#008497', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
         '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
      chart: {
         backgroundColor: null,
@@ -24,55 +24,57 @@ export default function setTheme(Highcharts) {
      },
      title: {
         style: {
-           color: '#E0E0E3',
+           color: '#eee',
            textTransform: 'uppercase',
-           fontSize: '20px'
+           fontSize: '20px',
+           fontWeight: 'bold'
         }
      },
      subtitle: {
         style: {
-           color: '#E0E0E3',
+           color: '#eee',
            textTransform: 'uppercase'
         }
      },
      xAxis: {
-        gridLineColor: '#707073',
+        gridLineColor: '#eee',
         labels: {
            style: {
-              color: '#E0E0E3'
+              color: '#aaa'
            }
         },
-        lineColor: '#707073',
-        minorGridLineColor: '#505053',
-        tickColor: '#707073',
+        lineColor: '#444',
+        minorGridLineColor: '#444',
+        tickColor: '#444',
+        tickWidth: 0,
         title: {
            style: {
-              color: '#A0A0A3'
+              color: '#444'
 
            }
         }
      },
      yAxis: {
-        gridLineColor: '#707073',
+        gridLineColor: '#444',
         labels: {
            style: {
-              color: '#E0E0E3'
+              color: '#aaa'
            }
         },
-        lineColor: '#707073',
-        minorGridLineColor: '#505053',
-        tickColor: '#707073',
-        tickWidth: 1,
+        lineColor: '#444',
+        minorGridLineColor: '#444',
+        tickColor: '#444',
+        tickWidth: 0,
         title: {
            style: {
-              color: '#A0A0A3'
+              color: '#444'
            }
         }
      },
      tooltip: {
-        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+        backgroundColor: '#222',
         style: {
-           color: '#F0F0F0'
+           color: '#eee'
         }
      },
      plotOptions: {
@@ -81,7 +83,7 @@ export default function setTheme(Highcharts) {
               color: '#B0B0B3'
            },
            marker: {
-              lineColor: '#333'
+              lineColor: '#2b2833'
            }
         },
         boxplot: {
@@ -96,7 +98,7 @@ export default function setTheme(Highcharts) {
      },
      legend: {
         itemStyle: {
-           color: '#E0E0E3'
+           color: '#eee'
         },
         itemHoverStyle: {
            color: '#FFF'
@@ -137,72 +139,72 @@ export default function setTheme(Highcharts) {
      // scroll charts
      rangeSelector: {
         buttonTheme: {
-           fill: '#505053',
-           stroke: '#000000',
+           fill: '#242128',
+           stroke: '#eee',
            style: {
-              color: '#CCC'
+              color: '#eee'
            },
            states: {
               hover: {
-                 fill: '#707073',
-                 stroke: '#000000',
+                 fill: '#aaa',
+                 stroke: '#eee',
                  style: {
-                    color: 'white'
+                    color: '#2b2833'
                  }
               },
               select: {
-                 fill: '#000003',
-                 stroke: '#000000',
+                 fill: '#aaa',
+                 stroke: '#2b2833',
                  style: {
-                    color: 'white'
+                    color: '#2b2833'
                  }
               }
            }
         },
-        inputBoxBorderColor: '#505053',
+        inputBoxBorderColor: '#444',
         inputStyle: {
-           backgroundColor: '#333',
-           color: 'silver'
+           backgroundColor: '#2b2833',
+           color: '#aaa'
         },
         labelStyle: {
-           color: 'silver'
+           color: '#eee'
         }
      },
 
      navigator: {
         handles: {
            backgroundColor: '#666',
-           borderColor: '#AAA'
+           borderColor: '#444'
         },
-        outlineColor: '#CCC',
-        maskFill: 'rgba(255,255,255,0.1)',
+        outlineColor: '#444',
+        maskFill: 'rgba(255,255,255,0.08)',
         series: {
-           color: '#7798BF',
-           lineColor: '#A6C7ED'
+           color: '#777',
+           lineColor: '#aaa'
         },
         xAxis: {
-           gridLineColor: '#505053'
+           gridLineColor: '#444'
         }
      },
 
 
      scrollbar: {
-        barBackgroundColor: '#808083',
-        barBorderColor: '#808083',
-        buttonArrowColor: '#CCC',
-        buttonBackgroundColor: '#606063',
-        buttonBorderColor: '#606063',
-        rifleColor: '#FFF',
-        trackBackgroundColor: '#404043',
-        trackBorderColor: '#404043'
+        barBackgroundColor: '#2b2833',
+        barBorderColor: '#444',
+        buttonArrowColor: '#444',
+        buttonBackgroundColor: '#2b2833',
+        buttonBorderColor: '#444',
+        rifleColor: '#666',
+        trackBackgroundColor: '#2b2833',
+        trackBorderColor: '#444'
      },
 
      // special colors for some of the
      legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
-     background2: '#505053',
-     dataLabelsColor: '#B0B0B3',
-     textColor: '#C0C0C0',
-     contrastTextColor: '#F0F0F3',
+     background2: '#444',
+     dataLabelsColor: '#aaa',
+     textColor: '#aaa',
+     contrastTextColor: '#red',
      maskColor: 'rgba(255,255,255,0.3)'
   };
 
