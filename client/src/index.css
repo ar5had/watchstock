@@ -1,3 +1,9 @@
+/*for bootstrap-grid*/
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: #0f0f0f;
+  padding: 20px 0;
 }
