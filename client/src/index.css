@@ -1,9 +1,13 @@
 /*for bootstrap-grid*/
-* {
+html * {
   box-sizing: border-box;
+  font-family: 'Courier Prime', monospace;
 }
 
 body {
   background: #0f0f0f;
   padding: 20px 0;
+  color: #fff;
+  text-align: center;
+  font-size: 50px;
 }
