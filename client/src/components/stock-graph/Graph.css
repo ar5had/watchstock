@@ -14,3 +14,7 @@
   background: #2b2833;
   padding: 15px 10px 10px 10px;
 }
+
+.highcharts-crosshair {
+  stroke: #444
+}

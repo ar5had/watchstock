@@ -1,0 +1,29 @@
+form {
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  width: 80%;
+}
+
+.searchButton {
+  width: 20%;
+  background: #2b2833;
+  color: #eee;
+  cursor: pointer;
+}
+
+.searchButton:hover, .searchButton:active {
+  background: #242128;
+}
+
+input {
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  color: #2b2833;
+}
+
+input:focus {
+  outline: none;
+}

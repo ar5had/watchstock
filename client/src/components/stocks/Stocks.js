@@ -1,13 +1,58 @@
 import React, { Component } from 'react';
-import './Panel.css';
+import './Stocks.css';
 
-class Panel extends Component {
-  render() {
+class Stocks extends Component {
+  getCurrentStocks() {
     return (
-      <div id="panel" className={this.props.classes}>
+      <div className="stocksWrapper">
+        <div className="stock">
+          <h4>APPL</h4>
+          <p>Apple Enterprises</p>
+        </div>
+        <div className="stock">
+          <h4>APPL</h4>
+          <p>Apple Enterprises</p>
+        </div>
+        <div className="stock">
+          <h4>APPL</h4>
+          <p>Apple Enterprises</p>
+        </div>
+        <div className="stock">
+          <h4>APPL</h4>
+          <p>Apple Enterprises</p>
+        </div>
+        <div className="stock">
+          <h4>APPL</h4>
+          <p>Apple Enterprises</p>
+        </div>
+        <div className="stock">
+          <h4>APPL</h4>
+          <p>Apple Enterprises</p>
+        </div>
+        <div className="stock">
+          <h4>APPL</h4>
+          <p>Apple Enterprises</p>
+        </div>
+        <div className="stock">
+          <h4>APPL</h4>
+          <p>Apple Enterprises</p>
+        </div>
+        <div className="stock">
+          <h4>APPL</h4>
+          <p>Apple Enterprises</p>
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    var stocks = this.getCurrentStocks();
+    return (
+      <div id="stocks" className={this.props.classes}>
+        {stocks}
       </div>
     );
   }
 }
 
-export default Panel;
+export default Stocks;

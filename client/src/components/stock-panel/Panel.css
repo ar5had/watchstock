@@ -1,5 +1,20 @@
 #panel {
- color: #fff;
- margin: 30px auto;
- text-align: center;
+  color: #333;
+  position: absolute;
+  background: #eee;
+  width: 300px;
+  height: 100vh;
+  overflow-y: scroll;
+  top: 0;
+  right: 0;
+  transform: translateX(300px);
+  transition-property: transform;
+  transition-duration: .4s;
+  padding: 0 20px;
+}
+
+h3.panel {
+  text-align: center;
+  padding: 0 0px 18px 0px;
+  border-bottom: solid 2px;
 }

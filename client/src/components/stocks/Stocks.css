@@ -1,0 +1,15 @@
+.stock {
+  background: #2b2833;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.stock > h4, .stock > p {
+  margin: 10px 0;
+  color: #eee;
+}
+
+.stock > p {
+  color: #aaa;
+  font-size: 15px;
+}

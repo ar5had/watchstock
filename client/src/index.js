@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Graph from './components/stock-graph/Graph.js';
-import Panel from './components/stock-panel/Panel.js';
 import Header from './components/header/Header.js';
+import Panel from './components/stock-panel/Panel.js';
 import 'bootstrap-grid';
 // syncronously load font first
 require('./fonts/Fonts.css');
@@ -16,7 +16,7 @@ const App = () => {
       </div>
       <div className="bodyWrapper row">
         <Graph classes="col-xs-12"/>
-        <Panel classes="col-xs-12"/>
+        <Panel/>
       </div>
     </div>
   );

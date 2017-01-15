@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import './Panel.css';
+import './SearchBar.css';
 
-class Panel extends Component {
+class SearchBar extends Component {
   render() {
     return (
-      <div id="panel" className={this.props.classes}>
+      <div id="searchBar" className={this.props.classes}>
+        <form>
+          <input className="searchInput" placeholder="Enter Stock Symbol"/>
+          <input className="searchButton" type="submit" value="Add" />
+        </form>
       </div>
     );
   }
 }
 
-export default Panel;
+export default SearchBar;

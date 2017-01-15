@@ -8,6 +8,14 @@ body {
   background: #242128;
   margin: 0;
   color: #ccc;
+  position: relative;
+  overflow-x: hidden;
+  transition-property: transform;
+  transition-duration: .4s;
+}
+
+body.is-active {
+  transform: translateX(-300px);
 }
 
 #root {
