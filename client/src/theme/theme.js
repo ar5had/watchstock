@@ -12,20 +12,20 @@
 export default function setTheme(Highcharts) {
 
   Highcharts.theme = {
-     colors: ['#8c3298', '#008497', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
+     colors: ['#008497','#8c3298', '#008497', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
         '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
      chart: {
         backgroundColor: null,
         style: {
            fontFamily: '\'Courier Prime\', monospace',
            fontWeight: 'normal',
-           fontStyle: 'normal'
+           fontStyle: 'normal',
+           color: '#aaa'
         }
      },
      title: {
         style: {
-           color: '#eee',
-           textTransform: 'uppercase',
+           color: '#ccc',
            fontSize: '20px',
            fontWeight: 'bold'
         }
@@ -33,7 +33,6 @@ export default function setTheme(Highcharts) {
      subtitle: {
         style: {
            color: '#eee',
-           textTransform: 'uppercase'
         }
      },
      xAxis: {
@@ -72,28 +71,29 @@ export default function setTheme(Highcharts) {
         }
      },
      tooltip: {
-        backgroundColor: '#222',
+       backgroundColor: '#2b2833',
+        useHTML: true,
         style: {
-           color: '#eee'
-        }
+           color: '#aaa'
+        },
+        borderRadius: '2',
+        borderColor: '#666',
+        borderWidth: 2,
+        followTouchMove: true
      },
      plotOptions: {
         series: {
+           animation: {
+              duration: 2000,
+              easing: 'easeOutBounce'
+           },
            dataLabels: {
               color: '#B0B0B3'
            },
            marker: {
               lineColor: '#2b2833'
-           }
-        },
-        boxplot: {
-           fillColor: '#505053'
-        },
-        candlestick: {
-           lineColor: 'white'
-        },
-        errorbar: {
-           color: 'white'
+           },
+           lineColor: 'rgba(0,0,0,0)'
         }
      },
      legend: {
@@ -109,7 +109,7 @@ export default function setTheme(Highcharts) {
      },
      credits: {
         style: {
-           color: '#666'
+           color: 'rgba(0,0,0,0)'
         }
      },
      labels: {
@@ -138,16 +138,19 @@ export default function setTheme(Highcharts) {
 
      // scroll charts
      rangeSelector: {
+        allButtonsEnabled: true,
+        buttonSpacing: 10,
         buttonTheme: {
-           fill: '#242128',
+           fill: 'rgba(255,255,255,0.08)',
            stroke: '#eee',
+           r: 0,
            style: {
-              color: '#eee'
+              color: '#aaa'
            },
            states: {
               hover: {
                  fill: '#aaa',
-                 stroke: '#eee',
+                 stroke: '#aaa',
                  style: {
                     color: '#2b2833'
                  }
@@ -161,13 +164,17 @@ export default function setTheme(Highcharts) {
               }
            }
         },
-        inputBoxBorderColor: '#444',
+        inputBoxBorderColor: '#666',
+        inputBoxWidth: 120,
+        inputBoxHeight: 18,
         inputStyle: {
            backgroundColor: '#2b2833',
-           color: '#aaa'
+           color: '#ccc',
+           outline: 'rgba(0,0,0,0)'
         },
         labelStyle: {
-           color: '#eee'
+           color: '#ccc',
+           fontWeight: 'bold'
         }
      },
 
@@ -180,7 +187,7 @@ export default function setTheme(Highcharts) {
         maskFill: 'rgba(255,255,255,0.08)',
         series: {
            color: '#777',
-           lineColor: '#aaa'
+           lineColor: 'rgba(0,0,0,0)'
         },
         xAxis: {
            gridLineColor: '#444'
@@ -189,17 +196,16 @@ export default function setTheme(Highcharts) {
 
 
      scrollbar: {
-        barBackgroundColor: '#2b2833',
+        barBackgroundColor: 'rgba(255,255,255,0.08)',
         barBorderColor: '#444',
-        buttonArrowColor: '#444',
-        buttonBackgroundColor: '#2b2833',
+        buttonArrowColor: '#666',
+        buttonBackgroundColor: 'rgba(255,255,255,0.08)',
         buttonBorderColor: '#444',
         rifleColor: '#666',
         trackBackgroundColor: '#2b2833',
         trackBorderColor: '#444'
      },
 
-     // special colors for some of the
      legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
      background2: '#444',
      dataLabelsColor: '#aaa',

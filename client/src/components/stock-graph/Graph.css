@@ -1,3 +1,16 @@
 .highcharts-credits {
   visibility: hidden;
 }
+
+.highcharts-tooltip span {
+  width: 140px !important;
+  overflow: auto;
+  white-space: normal !important;
+}
+
+#graph {
+  margin: 0 auto;
+  box-shadow: 0 0 20px #212121;
+  background: #2b2833;
+  padding: 15px 10px 10px 10px;
+}

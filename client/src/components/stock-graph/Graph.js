@@ -14,7 +14,7 @@ var config = {
     selected: 1
   },
   title: {
-    text: 'AAPL Stock Price'
+    text: 'Stocks'
   },
   series: [{
     name: 'AAPL',
@@ -31,7 +31,7 @@ var config = {
           y2: 1
       },
       stops: [
-          [0, Highcharts.getOptions().colors[0]],
+          [0, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(.7).get('rgba')],
           [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
       ]
     }

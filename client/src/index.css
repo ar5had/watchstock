@@ -7,14 +7,17 @@ html * {
 body {
   background: #242128;
   margin: 0;
-  color: #fff;
-  text-align: center;
-  font-size: 50px;
+  color: #ccc;
 }
 
 #root {
-  background: #2b2833;
   overflow: auto;
+}
+
+.row {
+  margin: 0;
+}
+
+.bodyWrapper {
   margin: 20px;
-  box-shadow: 0 0 20px #212121;
 }
