@@ -1,15 +1,43 @@
 .stock {
   background: #2b2833;
   padding: 10px;
+  position: relative;
   margin-bottom: 20px;
+}
+
+.stock > h4 {
+  padding-right: 30px;
 }
 
 .stock > h4, .stock > p {
   margin: 10px 0;
   color: #eee;
+  word-wrap: break-word;
 }
 
 .stock > p {
   color: #aaa;
   font-size: 15px;
+}
+
+.removeStock {
+  position: absolute;
+  top: 15px;
+  right: 12px;
+  color: #2b2833;
+  background: #eee;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition-property: background;
+  transition-duration: .4s;
+}
+
+.removeStock:hover {
+  cursor: pointer;
+  background: #ccc;
 }

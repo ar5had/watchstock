@@ -15,7 +15,7 @@ body {
   transition-timing-function: ease;
 }
 
-body.is-active {
+body.is-active{
   transform: translateX(-260px);
 }
 
@@ -37,7 +37,7 @@ body.is-active {
     padding: 0 15px;
   }
 
-  form, .stock {
+  form, .stock, .messageArea {
     margin-bottom: 15px;
   }
 

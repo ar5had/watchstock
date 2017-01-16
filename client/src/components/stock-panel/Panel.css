@@ -1,17 +1,17 @@
 #panel {
-  color: #333;
+  color: #2b2833;
   position: fixed;
   background: #eee;
   width: 260px;
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   top: 0;
   right: 0;
   transform: translateX(260px);
   transition-property: visibility;
   transition-duration: .6s;
   padding: 0 20px;
-  visibility: hidden;
+  visibility: visible;
 }
 
 #panel.is-active {
@@ -22,4 +22,23 @@ h3.panel {
   text-align: center;
   padding: 0 0px 18px 0px;
   border-bottom: solid 2px;
+}
+
+.messageArea {
+  margin-bottom: 20px;
+}
+
+.loader {
+    border: 2px solid #aaa;
+    border-top: 2px solid #2b2833;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './SearchBar.css';
-const FontAwesome = require('react-fontawesome');
 
 
 class SearchBar extends Component {
@@ -12,7 +11,7 @@ class SearchBar extends Component {
           <input className="searchButton" type="submit" value="Add" />
         </form>
         <div className="messageArea">
-
+          <div className="loader"></div>
         </div>
       </div>
     );

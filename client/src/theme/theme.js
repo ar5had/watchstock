@@ -9,11 +9,12 @@
  * Modified by Arshad Khan
  */
 
+import randomColor from 'randomcolor';
+
 export default function setTheme(Highcharts) {
 
   Highcharts.theme = {
-     colors: ['#008497','#8c3298', '#008497', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
-        '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+     colors: randomColor({count: 40}),
      chart: {
         backgroundColor: null,
         style: {

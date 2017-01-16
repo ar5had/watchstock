@@ -8,38 +8,16 @@ class Stocks extends Component {
         <div className="stock">
           <h4>APPL</h4>
           <p>Apple Enterprises</p>
+          <span className="removeStock">
+            x
+          </span>
         </div>
         <div className="stock">
           <h4>APPL</h4>
           <p>Apple Enterprises</p>
-        </div>
-        <div className="stock">
-          <h4>APPL</h4>
-          <p>Apple Enterprises</p>
-        </div>
-        <div className="stock">
-          <h4>APPL</h4>
-          <p>Apple Enterprises</p>
-        </div>
-        <div className="stock">
-          <h4>APPL</h4>
-          <p>Apple Enterprises</p>
-        </div>
-        <div className="stock">
-          <h4>APPL</h4>
-          <p>Apple Enterprises</p>
-        </div>
-        <div className="stock">
-          <h4>APPL</h4>
-          <p>Apple Enterprises</p>
-        </div>
-        <div className="stock">
-          <h4>APPL</h4>
-          <p>Apple Enterprises</p>
-        </div>
-        <div className="stock">
-          <h4>APPL</h4>
-          <p>Apple Enterprises</p>
+          <span className="removeStock">
+            x
+          </span>
         </div>
       </div>
     );
