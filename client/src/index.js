@@ -16,8 +16,8 @@ const App = () => {
       </div>
       <div className="bodyWrapper row">
         <Graph classes="col-xs-12"/>
-        <Panel/>
       </div>
+      <Panel/>
     </div>
   );
 }

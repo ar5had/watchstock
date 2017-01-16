@@ -1,16 +1,21 @@
 #panel {
   color: #333;
-  position: absolute;
+  position: fixed;
   background: #eee;
-  width: 300px;
+  width: 260px;
   height: 100vh;
   overflow-y: scroll;
   top: 0;
   right: 0;
-  transform: translateX(300px);
-  transition-property: transform;
-  transition-duration: .4s;
+  transform: translateX(260px);
+  transition-property: visibility;
+  transition-duration: .6s;
   padding: 0 20px;
+  visibility: hidden;
+}
+
+#panel.is-active {
+  visibility: visible;
 }
 
 h3.panel {

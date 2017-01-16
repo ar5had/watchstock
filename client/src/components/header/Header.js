@@ -5,8 +5,8 @@ class Header extends Component {
   toggle() {
     document.getElementById("toggleButton")
       .classList.toggle("is-active");
-//    document.getElementById("panel")
-//      .classList.toggle("is-active");
+   document.getElementById("panel")
+     .classList.toggle("is-active");
     document.body.classList.toggle("is-active");
   }
 

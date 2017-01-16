@@ -139,7 +139,7 @@ export default function setTheme(Highcharts) {
      // scroll charts
      rangeSelector: {
         allButtonsEnabled: true,
-        buttonSpacing: 10,
+        buttonSpacing: 7,
         buttonTheme: {
            fill: 'rgba(255,255,255,0.08)',
            stroke: '#eee',

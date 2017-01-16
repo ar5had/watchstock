@@ -12,14 +12,11 @@ body {
   overflow-x: hidden;
   transition-property: transform;
   transition-duration: .4s;
+  transition-timing-function: ease;
 }
 
 body.is-active {
-  transform: translateX(-300px);
-}
-
-#root {
-  overflow: auto;
+  transform: translateX(-260px);
 }
 
 .row {
@@ -28,4 +25,23 @@ body.is-active {
 
 .bodyWrapper {
   margin: 20px;
+}
+
+
+@media only screen and (max-width: 500px) {
+  .bodyWrapper {
+    margin: 15px;
+  }
+
+  #header, #panel {
+    padding: 0 15px;
+  }
+
+  form, .stock {
+    margin-bottom: 15px;
+  }
+
+  #graph {
+    padding: 15px 8px 10px 8px;
+  }
 }

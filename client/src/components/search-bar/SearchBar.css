@@ -3,11 +3,11 @@ form {
 }
 
 .searchInput {
-  width: 80%;
+  width: 75%;
 }
 
 .searchButton {
-  width: 20%;
+  width: 25%;
   background: #2b2833;
   color: #eee;
   cursor: pointer;
