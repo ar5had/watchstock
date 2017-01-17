@@ -55,6 +55,9 @@ var config = {
 };
 
 class Graph extends Component {
+  componentWillMount() {
+
+  }
   render() {
     return (
       <div id="graph" className={this.props.classes}>
