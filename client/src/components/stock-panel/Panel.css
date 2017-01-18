@@ -24,10 +24,6 @@ h3.panel {
   border-bottom: solid 2px;
 }
 
-.messageArea {
-  margin-bottom: 20px;
-}
-
 .loader {
     border: 2px solid #aaa;
     border-top: 2px solid #2b2833;

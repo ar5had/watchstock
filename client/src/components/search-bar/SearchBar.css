@@ -27,3 +27,8 @@ input {
 input:focus {
   outline: none;
 }
+
+.msg {
+  background: #ccc;
+  padding: 10px;
+}

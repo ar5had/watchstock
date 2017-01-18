@@ -19,6 +19,10 @@ body.is-active{
   transform: translateX(-260px);
 }
 
+.marB {
+  margin-bottom: 20px;
+}
+
 .row {
   margin: 0;
 }
@@ -44,4 +48,10 @@ body.is-active{
   #graph {
     padding: 15px 8px 10px 8px;
   }
+
+
+ .marB {
+   margin-bottom: 15px;
+ }
+
 }
