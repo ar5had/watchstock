@@ -20,7 +20,7 @@
   font-size: 15px;
 }
 
-.removeStock {
+.removeStockBtn {
   position: absolute;
   top: 15px;
   right: 12px;
@@ -35,9 +35,11 @@
   cursor: pointer;
   transition-property: background;
   transition-duration: .4s;
+  border: none;
+  font-size: 15px;
 }
 
-.removeStock:hover {
+.removeStockBtn:hover {
   cursor: pointer;
   background: #ccc;
 }

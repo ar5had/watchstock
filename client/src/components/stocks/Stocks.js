@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import Stock from '../single-stock/stock';
 import './Stocks.css';
 
 class Stocks extends Component {
-  constructor(props) {
-
-      super(props);
+  constructor() {
+    super();
     this.state = {
       stocks: [
         {
@@ -32,24 +32,16 @@ class Stocks extends Component {
   }
 
   getCurrentStocks() {
-    let stocks = this.state.stocks.map(stock => {
+    let stocks = this.state.stocks.map((stock, i) => {
       return (
-        <div className="stocksWrapper">
-          <div className="stock">
-            <h4>stock.code</h4>
-            <p>stock.description</p>
-            <span className="removeStockBtn" onClick={this.removeStock.bind(this)}>
-              x
-            </span>
-          </div>
+        <Stock key={i} code={stock.code} description={stock.description} removeStock={this.removeStock} />
       );
     });
-    console.log("Stocks", stocks);
     return stocks;
   }
 
   render() {
-    const stocks = this.getCurrentStocks();
+    const stocks = this.getCurrentStocks();;
     return (
       <div id="stocks" className={this.props.classes}>
         {stocks}
