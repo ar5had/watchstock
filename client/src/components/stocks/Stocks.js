@@ -28,7 +28,15 @@ class Stocks extends Component {
   }
 
   removeStock() {
-    console.log("removeStock called");
+    fetch('/stock/remove', {
+    	method: 'get'
+    }).then(function(response) {
+      return response.json();
+    }).then(function(data) {
+      console.log("data is", data);
+    }).catch(function(err) {
+    	console.error("Error happened while making /stock/remove req:", err);
+    });
   }
 
   getCurrentStocks() {

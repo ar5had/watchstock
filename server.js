@@ -27,11 +27,18 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Routes
-app.get('/addStock', (req, res) => {
+app.get('/stock/add', (req, res) => {
     console.log("addStock middleware called!");
     console.log(req.body, req.query);
-    res.send("new stock added");
+    res.json("new stock added");
 });
+
+app.get('/stock/remove', (req, res) => {
+    console.log("removeStock middleware called!");
+    console.log(req.body, req.query);
+    res.json("old stock removed");
+});
+
 
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
