@@ -14,7 +14,8 @@ if (process.env.NODE_ENV !== "production") {
 const app = express();
 
 // connect database
-mongoose.connect(process.env.MONGO_URI, (err) => {
+var options = {server: {socketOptions: {socketTimeoutMS: 10000}}};
+mongoose.connect(process.env.MONGO_URI, options, err => {
     if(err) {
       console.log(`Some error happened while connecting to db - ${err}`);
     } else {
@@ -22,6 +23,7 @@ mongoose.connect(process.env.MONGO_URI, (err) => {
     }
   });
 mongoose.Promise = global.Promise;
+mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.set('port', (process.env.PORT || 3001));
 

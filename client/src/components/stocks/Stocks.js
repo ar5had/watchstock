@@ -9,13 +9,16 @@ class Stocks extends Component {
     }).then(response => {
       // if status is 200/OK
       // hide element in fancy way
-      // element.classList.add("hide");
+      element.classList.add("hide");
       return response.json();
     }).then(data => {
       const newState = this.props.stocks.filter(elem => {
         return (elem.id !== id);
       });
-      this.props.changeParentState(newState, null);
+      setTimeout(()=>{
+        element = null;
+        this.props.changeParentState(newState, null);
+      }, 2000);
     }).catch(err => {
     	console.error("Error happened while making /stock/remove req:", err);
     });
