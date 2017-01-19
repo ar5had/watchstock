@@ -37,30 +37,23 @@ if (process.env.NODE_ENV === 'production') {
 // Routes
 app.get('/stock/getAllStock', (req, res) => {
     console.log("getAllStock middleware called!");
-    var obj = [{
-      id: 1,
-      code: 'a',
-      description: 'd'
-    }];
-
-    res.json(obj);
-    // ASQ((done) => {
-    //   Stock.find({})
-    //     .exec((err, stocks) => {
-    //       if(err) {
-    //         done.fail(err);
-    //       } else {
-    //         done(stocks);
-    //       }
-    //     });
-    // })
-    // .val(stocks => {
-    //   console.log(`stocks are ${stocks}`);
-    //   res.json(stocks);
-    // })
-    // .or(err => {
-    //   console.error(`Error: ${err}`);
-    // });
+    ASQ((done) => {
+      Stock.find({})
+        .exec((err, stocks) => {
+          if(err) {
+            done.fail(err);
+          } else {
+            done(stocks);
+          }
+        });
+    })
+    .val(stocks => {
+      console.log(`stocks are ${stocks}`);
+      res.json(stocks);
+    })
+    .or(err => {
+      console.error(`Error: ${err}`);
+    });
 });
 
 app.post('/stock/add', (req, res) => {

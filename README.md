@@ -9,3 +9,5 @@ A full stack js app for stock-market enthusiasts.
 
 ## problems
 * why `hide` class exist on element next to the `stockWrapper` class that is removed
+* where to put getAllStock req ?
+* gettin freq connection timeout of mongodb

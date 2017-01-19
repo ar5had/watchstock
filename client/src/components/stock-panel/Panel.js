@@ -14,22 +14,22 @@ class Panel extends Component {
         description: "bcd"
       }]
     };
-    this.getInitStocks()
+
   }
 
-  getInitStocks() {
-    fetch('/stock/getAllStock', {
-      method: 'get'
-    }).then(response => {
-      return response.json();
-    }).then(data => {
-      this.setState({
-        stocks: data
-      });
-    }).catch(err => {
-      console.error("Error happened while making /stock/getAllStock req:", err);
-    });
-  }
+  // getInitStocks() {
+  //   fetch('/stock/getAllStock', {
+  //     method: 'get'
+  //   }).then(response => {
+  //     return response.json();
+  //   }).then(data => {
+  //     this.setState({
+  //       stocks: data
+  //     });
+  //   }).catch(err => {
+  //     console.error("Error happened while making /stock/getAllStock req:", err);
+  //   });
+  // }
 
   updateState(obj, cb) {
     this.setState({stocks: obj}, cb);
@@ -42,7 +42,6 @@ class Panel extends Component {
   }
 
   render() {
-    console.log(`this.data in render is ${this.data}`);
     return (
       <div id="panel" className={this.props.classes}>
         <h3 className="panel">Add/Remove Stocks</h3>
