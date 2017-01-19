@@ -3,10 +3,17 @@ import './Header.css';
 
 class Header extends Component {
   toggle() {
-    document.getElementById("toggleButton")
-      .classList.toggle("is-active");
-   document.getElementById("panel")
-     .classList.toggle("is-active");
+    const toggleBtn = document.getElementById("toggleButton");
+    const panel = document.getElementById("panel");
+
+    if (!panel.classList.contains('is-active')) {
+      panel.scrollTop = 0;
+    }
+
+    toggleBtn.classList.toggle("is-active");
+
+    panel.classList.toggle("is-active");
+
     document.body.classList.toggle("is-active");
   }
 

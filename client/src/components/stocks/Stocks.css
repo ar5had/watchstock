@@ -43,3 +43,12 @@
   cursor: pointer;
   background: #ccc;
 }
+
+.stockWrapper {
+  transition-property: transform;
+  transition-duration: .1s;
+}
+
+.stockWrapper.hide {
+  transform: scale(0);
+}

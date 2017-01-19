@@ -14,7 +14,7 @@ import randomColor from 'randomcolor';
 export default function setTheme(Highcharts) {
 
   Highcharts.theme = {
-     colors: randomColor({count: 40}),
+     colors: randomColor({luminosity: 'light', alpha: .8, count: 40}),
      chart: {
         backgroundColor: null,
         style: {
