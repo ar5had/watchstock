@@ -23,9 +23,7 @@ class Panel extends Component {
   //   }).then(response => {
   //     return response.json();
   //   }).then(data => {
-  //     this.setState({
-  //       stocks: data
-  //     });
+  //     console.log("data is ",data);
   //   }).catch(err => {
   //     console.error("Error happened while making /stock/getAllStock req:", err);
   //   });
@@ -39,6 +37,10 @@ class Panel extends Component {
     let newState = [obj];
     newState = newState.concat(this.state.stocks);
     this.setState({stocks: newState}, cb);
+  }
+
+  ComponentWillMount() {
+    this.getInitStocks();
   }
 
   render() {
