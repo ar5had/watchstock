@@ -3,32 +3,75 @@ import './SearchBar.css';
 
 
 class SearchBar extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      message: ""
+    };
+
+    this.emptyCodeMsg = (<div className="msg marB">
+                          Empty input, enter valid code!
+                        </div>);
+
+    this.wrongCodeMsg = (<div className="msg marB">
+                          Wrong stock code, enter correct code!
+                        </div>);
+
+    this.loader = (<div className="loader marB" />);
+  }
+
   makexhr(e) {
     e.preventDefault();
-    console.log("event is",e);
-    fetch('/stock/add', {
-    	method: 'get'
-    }).then(function(response) {
-      return response.json();
-    }).then(function(data) {
-      console.log("data is", data);
-    }).catch(function(err) {
-    	console.error("Error happened while making /stock/add req:", err);
-    });
+    if(!this.textInput.value) {
+      this.setState({
+        message: this.emptyCodeMsg
+      });
+    } else {
+      this.setState({
+        message: this.loader
+      });
+      fetch('/stock/add', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          code: this.textInput.value
+        })
+      }).then(response => {
+        return response.json();
+      }).then(data => {
+        this.props.addStock(data, null);
+        this.textInput.value = "";
+        this.setState({
+          message: ""
+        });
+      }).catch(err => {
+        console.error("Error happened while making /stock/add req:", err);
+      });
+    }
   }
 
   render() {
     return (
       <div id="searchBar" className={this.props.classes}>
-        <form onSubmit={this.makexhr.bind(this)}>
-          <input name="searchInput" className="searchInput" placeholder="Enter Stock Code" required/>
+        <form onSubmit={this.makexhr.bind(this)} id="addStockForm">
+          <input name="searchInput" className="searchInput"
+            placeholder="Enter Stock Code"
+            ref={(input) => {
+              this.textInput = input;
+            }}
+            autoComplete="off"
+          />
           <input className="searchButton" type="submit" value="Add" />
         </form>
-        <div className="messageArea">
-          <div className="loader marB"></div>
-          <div className="msg marB">
-            Enter correct stock code!
-          </div>
+        <div className="messageArea"
+          ref={(elem) => {
+            this.msgArea = elem;
+          }}
+        >
+          {this.state.message}
         </div>
       </div>
     );

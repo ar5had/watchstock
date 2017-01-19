@@ -3,12 +3,8 @@ import Stock from '../single-stock/stock';
 import './Stocks.css';
 
 class Stocks extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   removeStock(id, element) {
-    fetch('/stock/remove', {
+    fetch(`/stock/remove?remove=${id}`, {
     	method: 'get'
     }).then(response => {
       // if status is 200/OK
@@ -16,19 +12,17 @@ class Stocks extends Component {
       // element.classList.add("hide");
       return response.json();
     }).then(data => {
-      const newState = this.state.stocks.filter(elem => {
+      const newState = this.props.stocks.filter(elem => {
         return (elem.id !== id);
       });
-
-      this.props.setState({stocks: newState}, ()=> {
-        console.log(this.props.stocks);
-      });
+      this.props.changeParentState(newState, null);
     }).catch(err => {
     	console.error("Error happened while making /stock/remove req:", err);
     });
   }
 
   getCurrentStocks() {
+    console.log(`state is ${this.props.stocks}`);
     let stocks = this.props.stocks.map((stock, i) => {
       return (
         <Stock key={i} code={stock.code} description={stock.description} removeStock={this.removeStock.bind(this)} id={stock.id}/>
