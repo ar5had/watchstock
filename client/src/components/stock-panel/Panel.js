@@ -8,42 +8,25 @@ class Panel extends Component {
     super(props);
 
     this.state =  {
-      stocks: [{
-        id: "1",
-        code: "Apple",
-        description: "Apple corporations",
-        hide: false
-      },{
-        id: "2",
-        code: "Msft",
-        description: "Microsoft corporations",
-        hide: false
-      },{
-        id: "3",
-        code: "ASD",
-        description: "Arshad corporations",
-        hide: false
-      },{
-        id: "4",
-        code: "khn",
-        description: "Khan corporations",
-        hide: false
-      }]
+      stocks: []
     };
 
   }
 
-  // getInitStocks() {
-  //   fetch('/stock/getAllStock', {
-  //     method: 'get'
-  //   }).then(response => {
-  //     return response.json();
-  //   }).then(data => {
-  //     console.log("data is ",data);
-  //   }).catch(err => {
-  //     console.error("Error happened while making /stock/getAllStock req:", err);
-  //   });
-  // }
+  getInitStocks() {
+    fetch('/stock/getAllStock', {
+      method: 'get'
+    }).then(response => {
+      return response.json();
+    }).then(data => {
+      console.log("data is ",data);
+      this.setState({
+        stocks: data
+      });
+    }).catch(err => {
+      console.error("Error happened while making /stock/getAllStock req:", err);
+    });
+  }
 
   updateState(arr, cb) {
     this.setState({stocks: arr}, cb);
@@ -55,7 +38,7 @@ class Panel extends Component {
     this.setState({stocks: newState}, cb);
   }
 
-  ComponentWillMount() {
+  componentWillMount() {
     this.getInitStocks();
   }
 
