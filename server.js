@@ -13,18 +13,6 @@ if (process.env.NODE_ENV !== "production") {
 
 const app = express();
 
-// connect database
-var options = {server: {socketOptions: {socketTimeoutMS: 10000}}};
-mongoose.connect(process.env.MONGO_URI, options, err => {
-    if(err) {
-      console.log(`Some error happened while connecting to db - ${err}`);
-    } else {
-      console.log(`db connected successfully!`);
-    }
-  });
-mongoose.Promise = global.Promise;
-mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
 app.set('port', (process.env.PORT || 3001));
 
 app.use(bodyParser.json());
@@ -37,8 +25,32 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
-// Routes
-app.use('/', routes);
+// connect database
+var options = {
+  server: {
+    socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 }
+  },
+  replset: {
+    socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 }
+  }
+};
+mongoose.connect(process.env.MONGO_URI, options, err => {
+    if(err) {
+      console.log(`Some error happened while connecting to db - ${err}`);
+    } else {
+      console.log(`db connected successfully!`);
+    }
+  });
+
+mongoose.Promise = global.Promise;
+var conn = mongoose.connection;
+
+conn.on('error', console.error.bind(console, 'connection error:'));
+
+conn.once('open', function() {
+  // Routes
+  app.use('/', routes);
+});
 
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console

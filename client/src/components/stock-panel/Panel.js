@@ -10,20 +10,24 @@ class Panel extends Component {
     this.state =  {
       stocks: [{
         id: "1",
-        code: "ASD",
-        description: "bcd"
+        code: "Apple",
+        description: "Apple corporations",
+        hide: false
       },{
         id: "2",
-        code: "ASD",
-        description: "bcd"
+        code: "Msft",
+        description: "Microsoft corporations",
+        hide: false
       },{
         id: "3",
         code: "ASD",
-        description: "bcd"
+        description: "Arshad corporations",
+        hide: false
       },{
         id: "4",
-        code: "ASD",
-        description: "bcd"
+        code: "khn",
+        description: "Khan corporations",
+        hide: false
       }]
     };
 
@@ -41,8 +45,8 @@ class Panel extends Component {
   //   });
   // }
 
-  updateState(obj, cb) {
-    this.setState({stocks: obj}, cb);
+  updateState(arr, cb) {
+    this.setState({stocks: arr}, cb);
   }
 
   addStock(obj, cb) {

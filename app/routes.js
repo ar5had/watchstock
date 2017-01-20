@@ -1,4 +1,5 @@
 const routes = require('express').Router();
+const ASQ = require('asynquence');
 
 // routes.get('/stock/getAllStock', (req, res) => {
 //     console.log("getAllStock middleware called!");

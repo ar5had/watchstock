@@ -2,7 +2,6 @@
   background: #2b2833;
   padding: 10px;
   position: relative;
-  margin-bottom: 20px;
 }
 
 .stock > h4 {
@@ -46,10 +45,27 @@
 }
 
 .stockWrapper {
-  transition-property: transform;
-  transition-duration: .1s;
+  transition-property: all;
+  transition-duration: .3s;
+  overflow: hidden;
+  max-height: 300px;
+  transform: scale(1);
 }
 
 .stockWrapper.hide {
-  transform: scale(0);
+  animation: removed-item-animation .8s cubic-bezier(0.55, -0.04, 0.91, 0.94) forwards;
+   /*transform origin is moved to the bottom left corner*/
+   transform-origin: 100% 100%;
+}
+
+@keyframes removed-item-animation {
+  0% {
+      opacity: 1;
+      transform: rotateZ(0);
+  }
+
+  100% {
+      opacity: 0;
+      transform: translateY(300px) rotateZ(-100deg);
+  }
 }
