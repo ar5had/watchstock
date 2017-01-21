@@ -38,7 +38,7 @@ class SearchBar extends Component {
       }).then(response => {
         return response.json();
       }).then(data => {
-        this.props.addStock(data, null);
+        this.props.addStock(data);
         this.textInput.value = "";
         this.setState({
           message: ""
@@ -67,6 +67,11 @@ class SearchBar extends Component {
         <div className="marB" id="removeAllWrapper">
           <button id="removeAll" onClick={
             () => {
+              Array.prototype.forEach.call(
+                document.querySelectorAll(".stock"),
+                elem => {
+                    elem.style.opacity = ".8";
+                });
               this.props.removeAllStock();
             }
           }>

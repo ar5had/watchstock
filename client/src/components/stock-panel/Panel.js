@@ -11,28 +11,35 @@ class Panel extends Component {
     };
   }
 
+  changeState(data, changeGraphState) {
+    this.setState({
+      stocks: data
+    },() => {
+      if(changeGraphState) {
+        this.props.updateGraph(
+          this.state.stocks.map(stock => stock.code)
+        );
+      }
+    });
+  }
+
   getInitStocks() {
     fetch('/stock/getAllStock', {
       method: 'get'
     }).then(response => {
       return response.json();
     }).then(data => {
-      this.setState({
-        stocks: data
-      });
+      this.changeState(data);
     }).catch(err => {
       console.error("Error happened while making /stock/getAllStock req:", err);
     });
   }
 
-  updateState(arr, cb) {
-    this.setState({stocks: arr}, cb);
-  }
-
   addStock(obj, cb) {
     let newState = [obj];
     newState = newState.concat(this.state.stocks);
-    this.setState({stocks: newState}, cb);
+    // graph state must change on addition of each stock
+    this.changeState(newState, true);
   }
 
   removeAllStock() {
@@ -48,7 +55,7 @@ class Panel extends Component {
       <div id="panel" className={this.props.classes}>
         <h3 className="panel">Add/Remove Stocks</h3>
         <SearchBar addStock={this.addStock.bind(this)} removeAllStock={this.removeAllStock.bind(this)}/>
-        <Stocks changeParentState={this.updateState.bind(this)} stocks={this.state.stocks} ref="stocks"/>
+        <Stocks changeParentState={this.changeState.bind(this)} stocks={this.state.stocks} ref="stocks"/>
       </div>
     );
   }

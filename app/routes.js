@@ -2,6 +2,7 @@ const routes = require('express').Router();
 const ASQ = require('asynquence');
 const mongoose = require('mongoose');
 const Stock = require('../models/stock.js');
+const apiReq = require('./api.js');
 
 routes.get('/stock/getAllStock', (req, res) => {
   ASQ((done) => {
@@ -19,6 +20,16 @@ routes.get('/stock/getAllStock', (req, res) => {
   })
   .or(err => {
     console.error(`Error: ${err}`);
+  });
+});
+
+routes.get('/api/:symbol', (req, res) => {
+  apiReq(req.params.symbol)
+  .then(data => {
+    res.json(data);
+  })
+  .catch(err => {
+    console.error(`Error while fetching stock data: ${err}`);
   });
 });
 

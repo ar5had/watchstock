@@ -17,7 +17,7 @@ class Stocks extends Component {
         }
         return elem;
       });
-      this.props.changeParentState(newState, null);
+      this.props.changeParentState(newState, false);
       return response;
     }).then(data => {
       // filter out the element that has to be removed
@@ -25,7 +25,7 @@ class Stocks extends Component {
         return (elem.id !== id);
       });
       setTimeout(()=> {
-        this.props.changeParentState(newState, null);
+        this.props.changeParentState(newState, true);
       }, 800);
     }).catch(err => {
     	console.error("Error happened while making /stock/remove req:", err);
@@ -44,13 +44,13 @@ class Stocks extends Component {
         elem.hide = true;
         return elem;
       });
-      this.props.changeParentState(newState, null);
+      this.props.changeParentState(newState, false);
       return response;
     }).then(data => {
       // filter out the element that has to be removed
       const newState = [];
       setTimeout(()=> {
-        this.props.changeParentState(newState, null);
+        this.props.changeParentState(newState, true);
       }, 800);
     }).catch(err => {
     	console.error("Error happened while making /stock/removeAll req:", err);

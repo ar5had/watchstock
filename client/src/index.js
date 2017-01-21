@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Graph from './components/stock-graph/Graph.js';
 import Header from './components/header/Header.js';
@@ -8,18 +8,25 @@ import 'bootstrap-grid';
 require('./fonts/Fonts.css');
 import './index.css';
 
-const App = () => {
-  return (
-    <div className="wrapper row">
-      <div className="headerWrapper row">
-        <Header classes="col-xs-12" />
+class App extends Component {
+
+  updateGraph(data) {
+    this.refs.graph.changeState(data);
+  }
+
+  render() {
+    return (
+      <div className="wrapper row">
+        <div className="headerWrapper row">
+          <Header classes="col-xs-12" />
+        </div>
+        <div className="bodyWrapper row">
+          <Graph ref="graph" classes="col-xs-12" />
+        </div>
+        <Panel ref="panel" updateGraph={this.updateGraph.bind(this)}/>
       </div>
-      <div className="bodyWrapper row">
-        <Graph classes="col-xs-12"/>
-      </div>
-      <Panel/>
-    </div>
-  );
+    );
+  }
 }
 
 ReactDOM.render(

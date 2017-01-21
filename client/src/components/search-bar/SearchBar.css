@@ -50,6 +50,7 @@ input {
   padding: 10px;
   font-size: 14px;
   color: #2b2833;
+  background: #fefefe;
   transition: all .3s ease;
 }
 
@@ -58,6 +59,27 @@ input:focus {
 }
 
 .msg {
-  background: #ccc;
+  background: #fefefe;
   padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border: solid 2px;
+  animation: warning .3s forwards;
+  animation-timing-function: ease-out;
+}
+
+@keyframes warning {
+  0% {
+      opacity: 0;
+      transform: scale(0)
+  }
+
+  80% {
+    transform: scale(1.15);
+  }
+
+  100% {
+      opacity: 1;
+      transform: scale(1);
+  }
 }
