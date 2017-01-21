@@ -3,7 +3,7 @@ var moment = require('moment');
 
 const getApiUrl = (symbol, date) => {
   return `https://www.quandl.com/api/v3/datasets/WIKI/${symbol}\
-/data.json?start_date=${date}&api_key=${process.env.QKEY}`;
+.json?order=asc&column_index=4&start_date=${date}&api_key=${process.env.QKEY}`;
 };
 
 const getStockData = symbol => {

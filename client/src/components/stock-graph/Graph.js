@@ -44,7 +44,7 @@ class Graph extends Component {
     return {
       name: name,
       type: "area",
-      data: [],
+      data: data,
       tooltip: {
         valueDecimals: 2
       },
@@ -56,20 +56,19 @@ class Graph extends Component {
             y2: 1
         },
         stops: [
-            [0, Highcharts.Color(Highcharts.getOptions().colors[i]).setOpacity(.7).get('rgba')],
+            [0, Highcharts.Color(Highcharts.getOptions().colors[i]).setOpacity(.4).get('rgba')],
             [1, Highcharts.Color(Highcharts.getOptions().colors[i]).setOpacity(0).get('rgba')]
         ]
       }
     }
   }
 
-  parse(data) {
+  addNewStock() {
 
-    return  {
-      name: name,
-      data: data,
-      i: i
-    }
+  }
+
+  deleteStock() {
+
   }
   //
   // removeAll() {
@@ -78,25 +77,40 @@ class Graph extends Component {
   //   )
   // }
 
-  changeState(data) {
-    let newConfig = this.state.config;
-    newConfig.series = data.map((symbol, i) => {
-      this.fetchStockData(symbol, response => {
-        console.log(`i is ${i}`);
+  parse(data) {
+    var name = data.dataset.name.split(" ");
+    return {
+      code: data.dataset.dataset_code,
+      name: name.slice(0, name.length - 5).join(" "),
+      data: data.dataset.data.map(
+        elem => [parseInt(new Date(elem[0]).getTime(), 10), parseFloat(elem[1], 10)]
+      )
+    };
+  }
 
+  changeState(data) {
+    console.log(`data is ${data}`);
+    data.forEach((symbol, index) => {
+      let newConfig = this.state.config;
+      newConfig.series = [];
+      this.fetchStockData(symbol, index, (code, name, data, i) => {
+        newConfig.series.push(this.getSeriesData(code, data, i));
+        this.setState({
+          config: newConfig
+        }, () => {
+          console.log("state is", this.state.config);
+        });
       });
-    });
-    this.setState({
-      config: newConfig
     });
   }
 
-  fetchStockData(symbol, cb) {
+  fetchStockData(symbol, index, cb) {
     fetch(`/api/${symbol}`)
     .then(response => {
       return response.json();
-    }).then(data => {
-      cb(parse(data));
+    }).then(resData => {
+      const {code, name, data} = this.parse(resData);
+      cb(code, name, data, index);
     }).catch(err => {
       console.error(`Error happened while making /api/symbol req: ${err}`);
     });
