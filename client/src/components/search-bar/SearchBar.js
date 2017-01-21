@@ -33,7 +33,7 @@ class SearchBar extends Component {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          code: this.textInput.value
+          code: this.textInput.value.toUpperCase()
         })
       }).then(response => {
         return response.json();

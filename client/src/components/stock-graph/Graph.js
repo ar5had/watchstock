@@ -11,7 +11,7 @@ class Graph extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      data: [],
       config: {
         rangeSelector: {
           selected: 1
@@ -63,24 +63,10 @@ class Graph extends Component {
     }
   }
 
-  addNewStock() {
-
-  }
-
-  deleteStock() {
-
-  }
-  //
-  // removeAll() {
-  //   this.setState(
-  //     config:
-  //   )
-  // }
-
   parse(data) {
     var name = data.dataset.name.split(" ");
     return {
-      code: data.dataset.dataset_code,
+      code: data.dataset.dataset_code.toUpperCase(),
       name: name.slice(0, name.length - 5).join(" "),
       data: data.dataset.data.map(
         elem => [parseInt(new Date(elem[0]).getTime(), 10), parseFloat(elem[1], 10)]
@@ -88,20 +74,74 @@ class Graph extends Component {
     };
   }
 
-  changeState(data) {
-    console.log(`data is ${data}`);
+  removeAllStock() {
+    this.setState({
+      config: Object.assign(this.state.config, {series: []}),
+      data: []
+    });
+  }
+
+  addStock(symbol, index) {
+    let newConfig = this.state.config;
+    this.fetchStockData(symbol, index, (code, name, data, i) => {
+      newConfig.series.push(this.getSeriesData(code, data, i));
+      this.setState({
+        config: newConfig,
+        data: [symbol].concat(this.state.data)
+      });
+    });
+  }
+
+  // find a way to use color of removed stock
+  removeStock(data) {
+    const newConfig = this.state.config;
+    newConfig.series = newConfig.series.filter((elem, i) => {
+      return (data.indexOf(elem.name) >= 0);
+    });
+    this.setState({
+      config: newConfig,
+      data: data
+    });
+  }
+
+  loadAllStocks(data) {
+    // find better way to do it
     data.forEach((symbol, index) => {
       let newConfig = this.state.config;
+      let newStockList = []
       newConfig.series = [];
       this.fetchStockData(symbol, index, (code, name, data, i) => {
         newConfig.series.push(this.getSeriesData(code, data, i));
+        newStockList.push(code);
         this.setState({
-          config: newConfig
-        }, () => {
-          console.log("state is", this.state.config);
+          config: newConfig,
+          data: newStockList
         });
       });
     });
+  }
+
+  changeState(data) {
+
+    // when data is empty i.e., all stocks are removed
+    if(data.length === 0) {
+      this.removeAllStock();
+    }
+    // when previous saved data length has one item less
+    // than new data i.e., new stock added
+    else if(data.length === (this.state.data.length + 1)) {
+      this.addStock(data[0], data.length - 1);
+    }
+    // when previous saved data length has one item more
+    // than new data i.e., stock deleted
+    else if(data.length === (this.state.data.length - 1)) {
+      this.removeStock(data);
+    }
+    // last case which means all stock is loaded
+    // on refresh or page loading
+    else {
+      this.loadAllStocks(data);
+    }
   }
 
   fetchStockData(symbol, index, cb) {

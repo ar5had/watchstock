@@ -29,7 +29,7 @@ class Panel extends Component {
     }).then(response => {
       return response.json();
     }).then(data => {
-      this.changeState(data);
+      this.changeState(data, true);
     }).catch(err => {
       console.error("Error happened while making /stock/getAllStock req:", err);
     });
