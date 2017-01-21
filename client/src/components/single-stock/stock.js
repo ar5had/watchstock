@@ -13,7 +13,8 @@ class Stock extends Component {
           <h4>{this.props.code}</h4>
           <p>{this.props.description}</p>
           <button className="removeStockBtn"
-            onClick={() => {
+            onClick={(e) => {
+              e.target.parentNode.style.opacity = ".8";
               this.props.removeStock(this.props.stockId);
             }}
           >

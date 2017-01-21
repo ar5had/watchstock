@@ -6,6 +6,30 @@ form {
   width: 75%;
 }
 
+#removeAllWrapper {
+  overflow: auto;
+}
+
+#removeAll {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  color: #2b2833;
+  background: #aaa;
+  transition: all .2s ease;
+  font-size: 14px;
+  opacity: .3;
+}
+
+#removeAll:hover, #removeAll:active {
+  cursor: pointer;
+  opacity: .5;
+}
+
+#removeAll:focus {
+  outline: none;
+}
+
 .searchButton {
   width: 25%;
   background: #2b2833;
@@ -17,11 +41,16 @@ form {
   background: #242128;
 }
 
+.searchButton, #removeAll {
+  font-weight: bold;
+}
+
 input {
   border: none;
   padding: 10px;
   font-size: 14px;
   color: #2b2833;
+  transition: all .3s ease;
 }
 
 input:focus {

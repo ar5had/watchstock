@@ -1,7 +1,8 @@
 /*for bootstrap-grid*/
-html * {
+* {
   box-sizing: border-box;
   font-family: 'Courier Prime', monospace;
+  outline: 1px solid transparent;
 }
 
 body {

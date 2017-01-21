@@ -5,13 +5,11 @@ import './Stocks.css';
 class Stocks extends Component {
   removeStock(id) {
     fetch(`/stock/remove?remove=${id}`, {
-    	method: 'get'
+    	method: 'delete'
     }).then(response => {
-
       // throw error if status is not 200
       if(response.status !== 200)
         throw new Error("/stock/remove request not successful");
-
       // hide element that has to be removed in fancy way
       const newState = this.props.stocks.map(elem => {
         if(elem.id === id) {
@@ -19,21 +17,43 @@ class Stocks extends Component {
         }
         return elem;
       });
-
       this.props.changeParentState(newState, null);
-      return response.json();
-
+      return response;
     }).then(data => {
       // filter out the element that has to be removed
       const newState = this.props.stocks.filter(elem => {
         return (elem.id !== id);
       });
-
       setTimeout(()=> {
         this.props.changeParentState(newState, null);
-      }, 1000);
+      }, 800);
     }).catch(err => {
     	console.error("Error happened while making /stock/remove req:", err);
+    });
+  }
+
+  removeAllStock() {
+    fetch(`/stock/removeAll`, {
+    	method: 'delete'
+    }).then(response => {
+      // throw error if status is not 200
+      if(response.status !== 200)
+        throw new Error("/stock/remove request not successful");
+      // hide element that has to be removed in fancy way
+      const newState = this.props.stocks.map(elem => {
+        elem.hide = true;
+        return elem;
+      });
+      this.props.changeParentState(newState, null);
+      return response;
+    }).then(data => {
+      // filter out the element that has to be removed
+      const newState = [];
+      setTimeout(()=> {
+        this.props.changeParentState(newState, null);
+      }, 800);
+    }).catch(err => {
+    	console.error("Error happened while making /stock/removeAll req:", err);
     });
   }
 

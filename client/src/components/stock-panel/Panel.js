@@ -6,11 +6,9 @@ import './Panel.css';
 class Panel extends Component {
   constructor(props) {
     super(props);
-
     this.state =  {
       stocks: []
     };
-
   }
 
   getInitStocks() {
@@ -19,7 +17,6 @@ class Panel extends Component {
     }).then(response => {
       return response.json();
     }).then(data => {
-      console.log("data is ",data);
       this.setState({
         stocks: data
       });
@@ -38,6 +35,10 @@ class Panel extends Component {
     this.setState({stocks: newState}, cb);
   }
 
+  removeAllStock() {
+    this.refs.stocks.removeAllStock();
+  }
+
   componentWillMount() {
     this.getInitStocks();
   }
@@ -46,8 +47,8 @@ class Panel extends Component {
     return (
       <div id="panel" className={this.props.classes}>
         <h3 className="panel">Add/Remove Stocks</h3>
-        <SearchBar addStock={this.addStock.bind(this)}/>
-        <Stocks changeParentState={this.updateState.bind(this)} stocks={this.state.stocks} />
+        <SearchBar addStock={this.addStock.bind(this)} removeAllStock={this.removeAllStock.bind(this)}/>
+        <Stocks changeParentState={this.updateState.bind(this)} stocks={this.state.stocks} ref="stocks"/>
       </div>
     );
   }

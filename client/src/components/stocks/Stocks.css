@@ -2,6 +2,7 @@
   background: #2b2833;
   padding: 10px;
   position: relative;
+  transition: opacity .2s ease;
 }
 
 .stock > h4 {
@@ -33,8 +34,7 @@
   line-height: 20px;
   border-radius: 50%;
   cursor: pointer;
-  transition-property: background;
-  transition-duration: .2s;
+  transition: opacity .2s ease;
   border: none;
   font-size: 15px;
 }
@@ -49,12 +49,29 @@
   transition-duration: .3s;
   overflow: hidden;
   max-height: 300px;
+  opacity: 0;
+  animation: new-item-animation .3s linear forwards;
+}
+
+.stockWrapper:hover {
   transform: scale(1);
 }
 
+@keyframes new-item-animation {
+  from {
+      opacity: 0;
+      transform: translateY(-400px);
+  }
+
+  to {
+      opacity: 1;
+      transform : translateY(0);
+  }
+}
+
 .stockWrapper.hide {
-  animation: removed-item-animation .8s cubic-bezier(0.55, -0.04, 0.91, 0.94) forwards;
-   /*transform origin is moved to the bottom left corner*/
+  animation: removed-item-animation .8s
+             cubic-bezier(0.55, -0.04, 0.91, 0.94) forwards;
    transform-origin: 100% 100%;
 }
 

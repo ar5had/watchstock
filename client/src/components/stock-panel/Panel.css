@@ -4,7 +4,7 @@
   background: #eee;
   width: 260px;
   height: 100vh;
-  overflow-y: auto;
+  overflow-y: scroll;
   top: 0;
   right: 0;
   transform: translateX(260px);
