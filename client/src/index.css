@@ -32,6 +32,35 @@ body.is-active{
   margin: 20px;
 }
 
+.loader {
+  border: 2px solid #aaa;
+  border-top: 2px solid #2b2833;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+.main-loader {
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  border: 5px solid #888;
+  border-top: 5px solid #ccc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+  z-index: 999;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 @media only screen and (max-width: 500px) {
   .bodyWrapper {

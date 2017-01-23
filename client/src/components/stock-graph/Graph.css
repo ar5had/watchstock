@@ -9,10 +9,12 @@
 }
 
 #graph {
+  position: relative;
   margin: 0 auto;
   box-shadow: 0 0 20px #212121;
   background: #2b2833;
   padding: 15px 10px 10px 10px;
+  min-height: 60vh;
 }
 
 .highcharts-crosshair {

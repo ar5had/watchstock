@@ -11,6 +11,7 @@ class Graph extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       data: [],
       config: {
         rangeSelector: {
@@ -87,7 +88,8 @@ class Graph extends Component {
       newConfig.series.push(this.getSeriesData(code, data, i));
       this.setState({
         config: newConfig,
-        data: [symbol].concat(this.state.data)
+        data: [symbol].concat(this.state.data),
+        isLoading: false
       });
     });
   }
@@ -100,7 +102,8 @@ class Graph extends Component {
     });
     this.setState({
       config: newConfig,
-      data: data
+      data: data,
+      isLoading: false
     });
   }
 
@@ -122,7 +125,7 @@ class Graph extends Component {
   }
 
   changeState(data) {
-
+    this.setState({isLoading: true});
     // when data is empty i.e., all stocks are removed
     if(data.length === 0) {
       this.removeAllStock();
@@ -157,9 +160,16 @@ class Graph extends Component {
   }
 
   render() {
+    let content;
+    if(true) {
+      content = <div className="main-loader" />
+    } else {
+      content = <ReactHighstock config={this.state.config} domprops={{id: "graph"}} />;
+    }
+
     return (
       <div id="graph" className={this.props.classes}>
-        <ReactHighstock config={this.state.config} domprops={{id: "graph"}} />
+        {content}
       </div>
     );
   }
