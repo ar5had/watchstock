@@ -78,7 +78,8 @@ class Graph extends Component {
   removeAllStock() {
     this.setState({
       config: Object.assign(this.state.config, {series: []}),
-      data: []
+      data: [],
+      isLoading: false
     });
   }
 
@@ -122,6 +123,10 @@ class Graph extends Component {
         });
       });
     });
+
+    this.setState({
+      isLoading: false
+    });
   }
 
   changeState(data) {
@@ -161,7 +166,8 @@ class Graph extends Component {
 
   render() {
     let content;
-    if(true) {
+    console.log(this.state.isLoading);
+    if(this.state.isLoading) {
       content = <div className="main-loader" />
     } else {
       content = <ReactHighstock config={this.state.config} domprops={{id: "graph"}} />;
