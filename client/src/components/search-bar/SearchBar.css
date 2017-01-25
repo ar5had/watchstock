@@ -52,6 +52,7 @@ input.searchButton {
 
 .searchButton:hover, .searchButton:active {
   background: #242128;
+  box-shadow: none;
 }
 
 .searchButton, #removeAll {
@@ -59,11 +60,13 @@ input.searchButton {
 }
 
 .msg {
-  background: #fefefe;
+  background: #deb14a;
   padding: 10px;
   font-size: 14px;
+  text-align: center;
   font-weight: bold;
-  border: solid 2px;
+  border: none;
+  color: #fefefe;
   animation: warning .3s forwards;
   animation-timing-function: ease-out;
 }

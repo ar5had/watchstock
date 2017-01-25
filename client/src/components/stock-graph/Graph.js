@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Graph.css';
 import setTheme from '../../theme/theme.js';
 import ReactHighstock from 'react-highcharts/ReactHighstock';
-import image from '../../images/stockSign.png';
+import image from '../../images/stock.svg';
 
 // applying theme
 let Highcharts = ReactHighstock.Highcharts;
@@ -11,7 +11,7 @@ setTheme(Highcharts);
 class Graph extends Component {
   constructor(props) {
     super(props);
-    this.color = 0;
+    this.colorCounter = 0;
     this.config = {
       rangeSelector: {
         selected: 1
@@ -76,15 +76,18 @@ class Graph extends Component {
       data: [],
       isLoading: false
     });
+    this.colorCounter = 0;
   }
 
   addStock(data) {
     this.config.series = [];
-    const seriesData = this.getSeriesData(data.code, data.data, 0);
+    const seriesData = this.getSeriesData(data.code, data.data, this.colorCounter);
     this.setState({
       data: [seriesData].concat(this.state.data),
       isLoading: false
     });
+
+    this.colorCounter++;
   }
 
   // find a way to use color of removed stock
@@ -97,8 +100,9 @@ class Graph extends Component {
   }
 
   loadAllStocks(data) {
-    const seriesData = data.map((elem, i) =>
-                      this.getSeriesData(elem.code, elem.data, i));
+    const seriesData = data.map((elem, ) => {
+      return this.getSeriesData(elem.code, elem.data, ++this.colorCounter);
+    });
     this.setState({
       data: seriesData.concat(this.state.data),
       isLoading: false

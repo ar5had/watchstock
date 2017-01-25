@@ -51,6 +51,19 @@ routes.get('/stock/getAllStock', (req, res) => {
 routes.post('/stock/add', (req, res) => {
   ASQ(req.body.code)
   .then((done, msg) => {
+    Stock.find({code: msg.toUpperCase()})
+      .exec((err, docs) => {
+        console.log(err, docs);
+        if(err)
+          done.fail(err);
+        if(docs.length > 0) {
+          done.fail("Stock already present");
+        } else {
+          done(msg);
+        }
+      });
+  })
+  .then((done, msg) => {
     apiReq(msg)
     .then(data => {
       done(getParsedStockData(data));

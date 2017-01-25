@@ -84,6 +84,14 @@ body.is-active{
     padding: 15px 8px 10px 8px;
   }
 
+  .noStockContent > img {
+    height: 70px;
+    margin-bottom: 15px;
+  }
+
+  .noStockContent > h2 {
+    font-size: 20px;
+  }
 
  .marB {
    margin-bottom: 15px;

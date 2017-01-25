@@ -33,8 +33,12 @@
 
 .noStockContent > img {
   opacity: .6;
+  height: 100px;
+  margin-bottom: 20px;
 }
 
 .noStockContent > h2 {
-  font-size: 22px;
+  font-size: 25px;
+  max-width: 450px;
+  margin: auto
 }

@@ -22,12 +22,13 @@ class SearchBar extends Component {
 
   makexhr(e) {
     e.preventDefault();
-    if(!this.textInput.value) {
+    const text = this.textInput.value.trim().toUpperCase();
+    if(!text) {
       this.setState({
         message: this.emptyCodeMsg
       });
     } else if(this.props.stockList
-              .indexOf(this.textInput.value.toUpperCase()) !== -1) {
+              .indexOf(text) !== -1) {
       this.setState({
         message: this.stockExistsMsg
       });
