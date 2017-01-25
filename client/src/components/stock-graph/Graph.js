@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Graph.css';
 import setTheme from '../../theme/theme.js';
 import ReactHighstock from 'react-highcharts/ReactHighstock';
+import image from '../../images/stockSign.png';
 
 // applying theme
 let Highcharts = ReactHighstock.Highcharts;
@@ -125,25 +126,6 @@ class Graph extends Component {
           console.error("Unhandled action:", actionObj);
       }
     }, 500);
-    // // when data is empty i.e., all stocks are removed
-    // if(data.length === 0) {
-    //   this.removeAllStock();
-    // }
-    // // when previous saved data length has one item less
-    // // than new data i.e., new stock added
-    // else if(data.length === (this.state.data.length + 1)) {
-    //   this.addStock(data[0], data.length - 1);
-    // }
-    // // when previous saved data length has one item more
-    // // than new data i.e., stock deleted
-    // else if(data.length === (this.state.data.length - 1)) {
-    //   this.removeStock(data);
-    // }
-    // // last case which means all stock is loaded
-    // // on refresh or page loading
-    // else {
-    //   this.loadAllStocks(data);
-    // }
   }
 
   loadAllStocksConfig() {
@@ -155,9 +137,16 @@ class Graph extends Component {
   getContent() {
     if(this.state.isLoading) {
       return <div className="main-loader" />
-    } else {
+    } else if(this.state.data.length > 0) {
       return <ReactHighstock config={this.config}
                 domprops={{id: "graph"}} />;
+    } else {
+      return  (<div className="noStockContent">
+                <img src={image} alt="stock"/>
+                <h2 className="noStockHeading">
+                  No Stock added! To add stock, open sidebar and add stock.
+                </h2>
+              </div>);
     }
   }
 

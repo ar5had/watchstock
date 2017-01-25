@@ -57,7 +57,8 @@ class Panel extends Component {
       <div id="panel" className={this.props.classes}>
         <h3 className="panel">Add/Remove Stocks</h3>
         <SearchBar addStock={this.addStock.bind(this)}
-          removeAllStock={this.removeAllStock.bind(this)}/>
+          removeAllStock={this.removeAllStock.bind(this)}
+          stockList={this.state.stocks.map(elem => elem.code)}/>
         <Stocks changeParentState={this.changeState.bind(this)}
           stocks={this.state.stocks} ref="stocks"/>
       </div>

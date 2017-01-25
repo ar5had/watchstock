@@ -14,9 +14,27 @@
   box-shadow: 0 0 20px #212121;
   background: #2b2833;
   padding: 15px 10px 10px 10px;
-  min-height: 60vh;
+  min-height: 425px;
 }
 
 .highcharts-crosshair {
   stroke: #444
+}
+
+.noStockContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.noStockContent > img {
+  opacity: .6;
+}
+
+.noStockContent > h2 {
+  font-size: 22px;
 }

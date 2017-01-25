@@ -14,6 +14,9 @@ class SearchBar extends Component {
     this.wrongCodeMsg = (<div className="msg marB">
                           Wrong stock code, enter correct code!
                         </div>);
+    this.stockExistsMsg = (<div className="msg marB">
+                            Stock already exists!
+                          </div>);
     this.loader = (<div className="loader marB" />);
   }
 
@@ -22,6 +25,11 @@ class SearchBar extends Component {
     if(!this.textInput.value) {
       this.setState({
         message: this.emptyCodeMsg
+      });
+    } else if(this.props.stockList
+              .indexOf(this.textInput.value.toUpperCase()) !== -1) {
+      this.setState({
+        message: this.stockExistsMsg
       });
     } else {
       this.setState({
@@ -44,7 +52,6 @@ class SearchBar extends Component {
           });
         }
       }).then(data => {
-        console.log("data is", data);
         this.props.addStock(data);
         this.textInput.value = "";
         this.setState({
