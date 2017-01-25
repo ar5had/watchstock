@@ -27,7 +27,11 @@ class Panel extends Component {
     }).then(response => {
       return response.json();
     }).then(data => {
-      console.log("initial data is", data);
+      const panelStateData = data.map(elem =>
+                              ({description: elem.name, code: elem.code,
+                                id: elem.id, hide: elem.hide}));
+      this.changeState(panelStateData, true,
+                      {action: "LOAD_ALL"}, data);
     }).catch(err => {
       console.error("Error happened while making /stock/getAllStock req:", err);
     });

@@ -28,7 +28,7 @@ routes.get('/stock/getAllStock', (req, res) => {
     // incase some of req fails then add those failed logs to reqFailed
     // stack so that later the failed logs can be send back to console
     .catch(err => {
-      reqFailed.push(`Error while fetching ${url} stock data: ${err}`);
+      reqFailed.push(`Error while fetching ${stock.code} stock data: ${err}`);
     });
   })
   .val(stocks => {
@@ -47,17 +47,6 @@ routes.get('/stock/getAllStock', (req, res) => {
     console.error(`Error: ${err}`);
   });
 });
-//
-// routes.get('/api/:symbol', (req, res) => {
-//   apiReq(req.params.symbol)
-//   .then(data => {
-//     // parsed stock data
-//     return getParsedStockData(data);
-//   })
-//   .catch(err => {
-//     console.error(`Error while fetching stock data: ${err}`);
-//   });
-// });
 
 routes.post('/stock/add', (req, res) => {
   ASQ(req.body.code)

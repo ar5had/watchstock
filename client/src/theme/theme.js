@@ -84,17 +84,17 @@ export default function setTheme(Highcharts) {
      },
      plotOptions: {
         series: {
-           animation: {
-              duration: 1000,
-              easing: 'easeOutBounce'
-           },
-           dataLabels: {
-              color: '#B0B0B3'
-           },
-           marker: {
-              lineColor: '#2b2833'
-           },
-          //  lineColor: 'rgba(0,0,0,0)'
+          animation: {
+            duration: 1000,
+            easing: 'easeOutBounce'
+          },
+          dataLabels: {
+            color: '#B0B0B3'
+          },
+          marker: {
+            lineColor: '#2b2833'
+          },
+          lineColor: 'rgba(0,0,0,0)'
         }
      },
      legend: {

@@ -60,7 +60,7 @@ class Graph extends Component {
         stops: [
             [0,
             Highcharts.Color(Highcharts.getOptions().colors[i])
-            .setOpacity(0).get('rgba')],
+            .setOpacity(0.6).get('rgba')],
             [1,
             Highcharts.Color(Highcharts.getOptions().colors[i])
             .setOpacity(0).get('rgba')]
@@ -96,29 +96,16 @@ class Graph extends Component {
   }
 
   loadAllStocks(data) {
-    // find better way to do it
-    // data.forEach((symbol, index) => {
-    //   let newConfig = this.state.config;
-    //   let newStockList = []
-    //   newConfig.series = [];
-    //   this.fetchStockData(symbol, index, (code, name, data, i) => {
-    //     newConfig.series.push(this.getSeriesData(code, data, i));
-    //     newStockList.push(code);
-    //     this.setState({
-    //       config: newConfig,
-    //       data: newStockList
-    //     });
-    //   });
-    // });
-    //
-    // this.setState({
-    //   isLoading: false
-    // });
+    const seriesData = data.map((elem, i) =>
+                      this.getSeriesData(elem.code, elem.data, i));
+    this.setState({
+      data: seriesData.concat(this.state.data),
+      isLoading: false
+    });
   }
 
   changeState(actionObj, data) {
     this.setState({isLoading: true});
-    console.log("changestate",this.state.data);
     const action = actionObj.action;
     setTimeout(() => {
       switch (action) {
