@@ -85,7 +85,7 @@ export default function setTheme(Highcharts) {
      plotOptions: {
         series: {
            animation: {
-              duration: 2000,
+              duration: 1000,
               easing: 'easeOutBounce'
            },
            dataLabels: {

@@ -7,7 +7,7 @@ const getApiUrl = (symbol, date) => {
 };
 
 const getStockData = symbol => {
-  const startDate = moment().subtract(1, 'month').format('YYYY-MM-DD');
+  const startDate = moment().subtract(4, 'month').format('YYYY-MM-DD');
   const url = getApiUrl(symbol, startDate);
   const reqOpt = {
     url: url,

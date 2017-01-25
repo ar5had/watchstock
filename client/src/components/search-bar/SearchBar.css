@@ -30,7 +30,20 @@ form {
   outline: none;
 }
 
-.searchButton {
+input.searchInput, input.searchButton {
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  color: #2b2833;
+  background: #fefefe;
+  transition: all .3s ease;
+}
+
+input:focus {
+  outline: none;
+}
+
+input.searchButton {
   width: 25%;
   background: #2b2833;
   color: #eee;
@@ -43,19 +56,6 @@ form {
 
 .searchButton, #removeAll {
   font-weight: bold;
-}
-
-input {
-  border: none;
-  padding: 10px;
-  font-size: 14px;
-  color: #2b2833;
-  background: #fefefe;
-  transition: all .3s ease;
-}
-
-input:focus {
-  outline: none;
 }
 
 .msg {

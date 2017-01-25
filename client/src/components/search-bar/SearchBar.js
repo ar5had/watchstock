@@ -78,7 +78,7 @@ class SearchBar extends Component {
             Remove All
           </button>
         </div>
-        <div className="messageArea"
+        <div className="messageArea marB"
           ref={(elem) => {
             this.msgArea = elem;
           }}
