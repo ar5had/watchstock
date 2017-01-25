@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 const Stock = new Schema({
     code: String,
     id: String,
-    description: String
+    description: String,
+    hide: Boolean
 });
 
 // using old function so that `this` is bound

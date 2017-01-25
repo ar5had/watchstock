@@ -94,7 +94,7 @@ export default function setTheme(Highcharts) {
            marker: {
               lineColor: '#2b2833'
            },
-           lineColor: 'rgba(0,0,0,0)'
+          //  lineColor: 'rgba(0,0,0,0)'
         }
      },
      legend: {

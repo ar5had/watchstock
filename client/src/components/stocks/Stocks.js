@@ -3,8 +3,8 @@ import Stock from '../single-stock/stock';
 import './Stocks.css';
 
 class Stocks extends Component {
-  removeStock(id) {
-    fetch(`/stock/remove?remove=${id}`, {
+  removeStock(code) {
+    fetch(`/stock/remove?remove=${code}`, {
     	method: 'delete'
     }).then(response => {
       // throw error if status is not 200
@@ -12,7 +12,7 @@ class Stocks extends Component {
         throw new Error("/stock/remove request not successful");
       // hide element that has to be removed in fancy way
       const newState = this.props.stocks.map(elem => {
-        if(elem.id === id) {
+        if(elem.code === code) {
           elem.hide = true;
         }
         return elem;
@@ -21,11 +21,10 @@ class Stocks extends Component {
       return response;
     }).then(data => {
       // filter out the element that has to be removed
-      const newState = this.props.stocks.filter(elem => {
-        return (elem.id !== id);
-      });
+      const newState = this.props.stocks.filter(elem => (elem.code !== code));
       setTimeout(()=> {
-        this.props.changeParentState(newState, true);
+        this.props.changeParentState(newState, true,
+                                    {action: "REMOVE", code: code});
       }, 800);
     }).catch(err => {
     	console.error("Error happened while making /stock/remove req:", err);
@@ -50,7 +49,7 @@ class Stocks extends Component {
       // filter out the element that has to be removed
       const newState = [];
       setTimeout(()=> {
-        this.props.changeParentState(newState, true);
+        this.props.changeParentState(newState, true, {action: "REMOVE_ALL"});
       }, 800);
     }).catch(err => {
     	console.error("Error happened while making /stock/removeAll req:", err);

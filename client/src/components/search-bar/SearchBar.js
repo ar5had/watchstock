@@ -36,8 +36,15 @@ class SearchBar extends Component {
           code: this.textInput.value.toUpperCase()
         })
       }).then(response => {
-        return response.json();
+        if(response.status === 200) {
+          return response.json();
+        } else {
+          this.setState({
+            message: this.wrongCodeMsg
+          });
+        }
       }).then(data => {
+        console.log("data is", data);
         this.props.addStock(data);
         this.textInput.value = "";
         this.setState({

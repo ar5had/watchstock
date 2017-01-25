@@ -3,7 +3,6 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Stock = require('./models/stock.js');
-const ASQ = require('asynquence');
 const routes = require('./app/routes.js');
 
 // loads all custom environments variables

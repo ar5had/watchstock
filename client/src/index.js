@@ -10,8 +10,8 @@ import './index.css';
 
 class App extends Component {
 
-  updateGraph(data) {
-    this.refs.graph.changeState(data);
+  updateGraph(actionObj, graphStateData) {
+    this.refs.graph.changeState(actionObj, graphStateData);
   }
 
   render() {

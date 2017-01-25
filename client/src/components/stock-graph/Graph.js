@@ -10,34 +10,35 @@ setTheme(Highcharts);
 class Graph extends Component {
   constructor(props) {
     super(props);
+    this.color = 0;
+    this.config = {
+      rangeSelector: {
+        selected: 1
+      },
+      title: {
+        text: 'Stocks'
+      },
+      series: [],
+      responsive: {
+        rules: [{
+            condition: {
+              maxWidth: "500"
+            },
+            chartOptions: {
+              subtitle: {
+                  text: null
+              },
+              navigator: {
+                  enabled: false
+              }
+            }
+        }]
+      }
+    };
+
     this.state = {
       isLoading: true,
-      data: [],
-      config: {
-        rangeSelector: {
-          selected: 1
-        },
-        title: {
-          text: 'Stocks'
-        },
-        series: [],
-        responsive: {
-          rules: [{
-              condition: {
-                  maxWidth: "500"
-              },
-              chartOptions: {
-                  subtitle: {
-                      text: null
-                  },
-                  navigator: {
-                      enabled: false
-                  }
-              }
-          }]
-        }
-      }
-
+      data: []
     }
   }
 
@@ -57,125 +58,127 @@ class Graph extends Component {
             y2: 1
         },
         stops: [
-            [0, Highcharts.Color(Highcharts.getOptions().colors[i]).setOpacity(.4).get('rgba')],
-            [1, Highcharts.Color(Highcharts.getOptions().colors[i]).setOpacity(0).get('rgba')]
+            [0,
+            Highcharts.Color(Highcharts.getOptions().colors[i])
+            .setOpacity(0).get('rgba')],
+            [1,
+            Highcharts.Color(Highcharts.getOptions().colors[i])
+            .setOpacity(0).get('rgba')]
         ]
       }
     }
   }
 
-  parse(data) {
-    var name = data.dataset.name.split(" ");
-    return {
-      code: data.dataset.dataset_code.toUpperCase(),
-      name: name.slice(0, name.length - 5).join(" "),
-      data: data.dataset.data.map(
-        elem => [parseInt(new Date(elem[0]).getTime(), 10), parseFloat(elem[1], 10)]
-      )
-    };
-  }
-
   removeAllStock() {
+    this.config.series = [];
     this.setState({
-      config: Object.assign(this.state.config, {series: []}),
       data: [],
       isLoading: false
     });
   }
 
-  addStock(symbol, index) {
-    let newConfig = this.state.config;
-    this.fetchStockData(symbol, index, (code, name, data, i) => {
-      newConfig.series.push(this.getSeriesData(code, data, i));
-      this.setState({
-        config: newConfig,
-        data: [symbol].concat(this.state.data),
-        isLoading: false
-      });
+  addStock(data) {
+    this.config.series = [];
+    const seriesData = this.getSeriesData(data.code, data.data, 0);
+    this.setState({
+      data: [seriesData].concat(this.state.data),
+      isLoading: false
     });
   }
 
   // find a way to use color of removed stock
-  removeStock(data) {
-    const newConfig = this.state.config;
-    newConfig.series = newConfig.series.filter((elem, i) => {
-      return (data.indexOf(elem.name) >= 0);
-    });
+  removeStock(code) {
+    this.config.series = [];
     this.setState({
-      config: newConfig,
-      data: data,
+      data: this.state.data.filter(elem => (elem.name !== code)),
       isLoading: false
     });
   }
 
   loadAllStocks(data) {
     // find better way to do it
-    data.forEach((symbol, index) => {
-      let newConfig = this.state.config;
-      let newStockList = []
-      newConfig.series = [];
-      this.fetchStockData(symbol, index, (code, name, data, i) => {
-        newConfig.series.push(this.getSeriesData(code, data, i));
-        newStockList.push(code);
-        this.setState({
-          config: newConfig,
-          data: newStockList
-        });
-      });
-    });
-
-    this.setState({
-      isLoading: false
-    });
+    // data.forEach((symbol, index) => {
+    //   let newConfig = this.state.config;
+    //   let newStockList = []
+    //   newConfig.series = [];
+    //   this.fetchStockData(symbol, index, (code, name, data, i) => {
+    //     newConfig.series.push(this.getSeriesData(code, data, i));
+    //     newStockList.push(code);
+    //     this.setState({
+    //       config: newConfig,
+    //       data: newStockList
+    //     });
+    //   });
+    // });
+    //
+    // this.setState({
+    //   isLoading: false
+    // });
   }
 
-  changeState(data) {
+  changeState(actionObj, data) {
     this.setState({isLoading: true});
-    // when data is empty i.e., all stocks are removed
-    if(data.length === 0) {
-      this.removeAllStock();
-    }
-    // when previous saved data length has one item less
-    // than new data i.e., new stock added
-    else if(data.length === (this.state.data.length + 1)) {
-      this.addStock(data[0], data.length - 1);
-    }
-    // when previous saved data length has one item more
-    // than new data i.e., stock deleted
-    else if(data.length === (this.state.data.length - 1)) {
-      this.removeStock(data);
-    }
-    // last case which means all stock is loaded
-    // on refresh or page loading
-    else {
-      this.loadAllStocks(data);
-    }
+    console.log("changestate",this.state.data);
+    const action = actionObj.action;
+    setTimeout(() => {
+      switch (action) {
+        case "LOAD_ALL":
+          this.loadAllStocks(data);
+          break;
+        case "ADD":
+          this.addStock(data);
+          break;
+        case "REMOVE":
+          this.removeStock(actionObj.code);
+          break;
+        case "REMOVE_ALL":
+          this.removeAllStock();
+          break;
+        default:
+          console.error("Unhandled action:", actionObj);
+      }
+    }, 500);
+    // // when data is empty i.e., all stocks are removed
+    // if(data.length === 0) {
+    //   this.removeAllStock();
+    // }
+    // // when previous saved data length has one item less
+    // // than new data i.e., new stock added
+    // else if(data.length === (this.state.data.length + 1)) {
+    //   this.addStock(data[0], data.length - 1);
+    // }
+    // // when previous saved data length has one item more
+    // // than new data i.e., stock deleted
+    // else if(data.length === (this.state.data.length - 1)) {
+    //   this.removeStock(data);
+    // }
+    // // last case which means all stock is loaded
+    // // on refresh or page loading
+    // else {
+    //   this.loadAllStocks(data);
+    // }
   }
 
-  fetchStockData(symbol, index, cb) {
-    fetch(`/api/${symbol}`)
-    .then(response => {
-      return response.json();
-    }).then(resData => {
-      const {code, name, data} = this.parse(resData);
-      cb(code, name, data, index);
-    }).catch(err => {
-      console.error(`Error happened while making /api/symbol req: ${err}`);
+  loadAllStocksConfig() {
+    this.state.data.forEach(config => {
+      this.config.series.push(config);
     });
+  }
+
+  getContent() {
+    if(this.state.isLoading) {
+      return <div className="main-loader" />
+    } else {
+      return <ReactHighstock config={this.config}
+                domprops={{id: "graph"}} />;
+    }
   }
 
   render() {
-    let content;
-    console.log(this.state.isLoading);
-    if(this.state.isLoading) {
-      content = <div className="main-loader" />
-    } else {
-      content = <ReactHighstock config={this.state.config} domprops={{id: "graph"}} />;
-    }
-
+    this.loadAllStocksConfig();
     return (
       <div id="graph" className={this.props.classes}>
-        {content}
+        {this.getContent()}
       </div>
     );
   }
