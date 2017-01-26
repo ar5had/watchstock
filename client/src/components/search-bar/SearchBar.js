@@ -27,12 +27,7 @@ class SearchBar extends Component {
       this.setState({
         message: this.emptyCodeMsg
       });
-    } else if(this.props.stockList
-              .indexOf(text) !== -1) {
-      this.setState({
-        message: this.stockExistsMsg
-      });
-    } else {
+    }  else {
       this.setState({
         message: this.loader
       });
@@ -47,6 +42,10 @@ class SearchBar extends Component {
       }).then(response => {
         if(response.status === 200) {
           return response.json();
+        } else if (response.status === 400) {
+          this.setState({
+            message: this.stockExistsMsg
+          });
         } else {
           this.setState({
             message: this.wrongCodeMsg

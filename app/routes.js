@@ -57,7 +57,7 @@ routes.post('/stock/add', (req, res) => {
         if(err)
           done.fail(err);
         if(docs.length > 0) {
-          done.fail("Stock already present");
+          done.fail("Stock already present!");
         } else {
           done(msg);
         }
@@ -95,15 +95,19 @@ routes.post('/stock/add', (req, res) => {
     res.json(stock);
   })
   .or(err => {
+    if(err === "Stock already present!") {
+      res.status(400).send(err);
+    } else {
+      res.status(404).send(err);
+    }
     console.error(`Error: ${err}`);
-    res.status(404).send(err);
   });
 });
 
 routes.delete('/stock/remove', (req, res) => {
   ASQ(req.query.remove)
   .then((done, msg) => {
-    Stock.findOneAndRemove({"id": msg})
+    Stock.findOneAndRemove({"code": msg})
       .exec(err => {
         if(err) {
           throw err;
