@@ -1,5 +1,5 @@
 #header {
-  box-shadow: 0 0 20px #212121;
+  box-shadow: 0 0 20px rgba(0,0,0,.3);
   background: #2b2833;
   padding: 0px 20px;
 }
@@ -44,7 +44,7 @@ button::-moz-focus-inner {
 }
 
 .hamburger:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .hamburger-box {
@@ -106,5 +106,5 @@ button::-moz-focus-inner {
     transition: bottom 0.1s ease-out, transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-  background: #ccc;
+  background: #efefef;
 }

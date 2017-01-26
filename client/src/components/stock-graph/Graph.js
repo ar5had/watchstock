@@ -11,7 +11,6 @@ setTheme(Highcharts);
 class Graph extends Component {
   constructor(props) {
     super(props);
-    this.colorCounter = 0;
     this.config = {
       rangeSelector: {
         selected: 1
@@ -19,22 +18,7 @@ class Graph extends Component {
       title: {
         text: 'Stocks'
       },
-      series: [],
-      responsive: {
-        rules: [{
-            condition: {
-              maxWidth: "500"
-            },
-            chartOptions: {
-              subtitle: {
-                  text: null
-              },
-              navigator: {
-                  enabled: false
-              }
-            }
-        }]
-      }
+      series: []
     };
 
     this.state = {
@@ -46,22 +30,22 @@ class Graph extends Component {
   getSeriesData(name, data, i) {
     return {
       name: name,
-      type: "area",
+      type: "areaspline",
       data: data,
       tooltip: {
         valueDecimals: 2
       },
       fillColor: {
         linearGradient: {
-            x1: 0,
-            y1: 0,
-            x2: 0,
-            y2: 1
+          x1: 0,
+          y1: 0,
+          x2: 0,
+          y2: 1
         },
         stops: [
             [0,
             Highcharts.Color(Highcharts.getOptions().colors[i])
-            .setOpacity(0.6).get('rgba')],
+            .setOpacity(0.4).get('rgba')],
             [1,
             Highcharts.Color(Highcharts.getOptions().colors[i])
             .setOpacity(0).get('rgba')]
@@ -71,40 +55,34 @@ class Graph extends Component {
   }
 
   removeAllStock() {
-    this.config.series = [];
     this.setState({
       data: [],
       isLoading: false
     });
-    this.colorCounter = 0;
   }
 
   addStock(data) {
-    this.config.series = [];
-    const seriesData = this.getSeriesData(data.code, data.data, this.colorCounter);
+    let newData = (this.state.data).concat([data]);
+    if(newData.length > 10) {
+      newData.shift();
+    }
     this.setState({
-      data: [seriesData].concat(this.state.data),
+      data: newData,
       isLoading: false
     });
-
-    this.colorCounter++;
   }
 
   // find a way to use color of removed stock
   removeStock(code) {
-    this.config.series = [];
     this.setState({
-      data: this.state.data.filter(elem => (elem.name !== code)),
+      data: this.state.data.filter(elem => (elem.code !== code)),
       isLoading: false
     });
   }
 
   loadAllStocks(data) {
-    const seriesData = data.map((elem, ) => {
-      return this.getSeriesData(elem.code, elem.data, ++this.colorCounter);
-    });
     this.setState({
-      data: seriesData.concat(this.state.data),
+      data: this.state.data.concat(data),
       isLoading: false
     });
   }
@@ -133,9 +111,13 @@ class Graph extends Component {
   }
 
   loadAllStocksConfig() {
-    this.state.data.forEach(config => {
-      this.config.series.push(config);
-    });
+    this.config.series = [];
+    if(this.state.data.length > 0) {
+      this.state.data.forEach((data, i) => {
+        this.config.series.push(
+          this.getSeriesData(data.code, data.data, i));
+      });
+    }
   }
 
   getContent() {

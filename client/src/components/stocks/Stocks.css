@@ -12,7 +12,7 @@
 
 .stock > h4, .stock > p {
   margin: 10px 0;
-  color: #eee;
+  color: #efefef;
   word-wrap: break-word;
 }
 
@@ -26,7 +26,7 @@
   top: 15px;
   right: 12px;
   color: #2b2833;
-  background: #eee;
+  background: #efefef;
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -51,10 +51,12 @@
   max-height: 300px;
   opacity: 0;
   animation: new-item-animation .3s linear forwards;
+  box-shadow: 0 10px 15px 0 rgba(46,61,73,.52);
 }
 
 .stockWrapper:hover {
   transform: scale(1);
+  box-shadow: 0 5px 10px 0 rgba(46,61,73,.52);
 }
 
 @keyframes new-item-animation {

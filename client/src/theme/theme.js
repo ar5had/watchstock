@@ -9,12 +9,13 @@
  * Modified by Arshad Khan
  */
 
-import randomColor from 'randomcolor';
-
 export default function setTheme(Highcharts) {
 
   Highcharts.theme = {
-     colors: randomColor({luminosity: 'light', alpha: .8, count: 40}),
+     colors: ['#7a3086', '#007b91', '#d92b4b',
+              '#91c7a9', '#de8d47', '#008080',
+              '#4040C0', '#46bcde', '#c5c454',
+              '#d6d8de'],
      chart: {
         backgroundColor: null,
         style: {
@@ -27,14 +28,14 @@ export default function setTheme(Highcharts) {
      },
      title: {
         style: {
-           color: '#ccc',
+           color: '#efefef',
            fontSize: '20px',
            fontWeight: 'bold'
         }
      },
      subtitle: {
         style: {
-           color: '#eee',
+           color: '#efefef',
         }
      },
      xAxis: {
@@ -95,7 +96,13 @@ export default function setTheme(Highcharts) {
           marker: {
             lineColor: '#2b2833'
           },
-        //  lineColor: 'rgba(0,0,0,0)'
+          lineWidth: 1.5,
+          states: {
+            hover: {
+              lineWidth: 1.5
+            }
+          }
+          //lineColor: 'rgba(0,0,0,0)'
         }
      },
      legend: {
@@ -151,14 +158,14 @@ export default function setTheme(Highcharts) {
            },
            states: {
               hover: {
-                 fill: '#aaa',
+                 fill: '#ddd',
                  stroke: '#aaa',
                  style: {
                     color: '#2b2833'
                  }
               },
               select: {
-                 fill: '#aaa',
+                 fill: '#ddd',
                  stroke: '#2b2833',
                  style: {
                     color: '#2b2833'
@@ -175,12 +182,13 @@ export default function setTheme(Highcharts) {
            outline: 'rgba(0,0,0,0)'
         },
         labelStyle: {
-           color: '#ccc',
+           color: '#efefef',
            fontWeight: 'bold'
         }
      },
 
      navigator: {
+        enabled: false,
         handles: {
            backgroundColor: '#666',
            borderColor: '#444'

@@ -11,7 +11,7 @@
 #graph {
   position: relative;
   margin: 0 auto;
-  box-shadow: 0 0 20px #212121;
+  box-shadow: 0 0 20px rgba(0,0,0,.3);
   background: #2b2833;
   padding: 15px 10px 10px 10px;
   min-height: 425px;
@@ -29,10 +29,10 @@
   width: 100%;
   text-align: center;
   padding: 10px 20px;
+  animation: glow 3s linear infinite;
 }
 
 .noStockContent > img {
-  opacity: .6;
   height: 100px;
   margin-bottom: 20px;
 }
@@ -40,5 +40,28 @@
 .noStockContent > h2 {
   font-size: 25px;
   max-width: 450px;
+  color: #efefef;
   margin: auto
+}
+
+@keyframes glow {
+    0% {
+      opacity: 1;
+    }
+
+    25% {
+      opacity: .6;
+    }
+
+    50% {
+      opacity: .3;
+    }
+
+    75% {
+      opacity: .6;
+    }
+
+    100% {
+      opacity: 1;
+    }
 }

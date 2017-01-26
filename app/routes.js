@@ -53,7 +53,6 @@ routes.post('/stock/add', (req, res) => {
   .then((done, msg) => {
     Stock.find({code: msg.toUpperCase()})
       .exec((err, docs) => {
-        console.log(err, docs);
         if(err)
           done.fail(err);
         if(docs.length > 0) {

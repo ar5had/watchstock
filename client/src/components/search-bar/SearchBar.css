@@ -4,10 +4,12 @@ form {
 
 .searchInput {
   width: 75%;
+  box-shadow: 0 5px 10px 0 rgba(46,61,73,.32);
 }
 
 #removeAllWrapper {
   overflow: auto;
+  box-shadow: 0 5px 10px 0 rgba(46,61,73,.32);
 }
 
 #removeAll {
@@ -48,11 +50,12 @@ input.searchButton {
   background: #2b2833;
   color: #eee;
   cursor: pointer;
+  box-shadow: 0 10px 15px 0 rgba(46,61,73,.52);
 }
 
 .searchButton:hover, .searchButton:active {
   background: #242128;
-  box-shadow: none;
+  box-shadow: 0 5px 10px 0 rgba(46,61,73,.52);
 }
 
 .searchButton, #removeAll {
