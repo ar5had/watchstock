@@ -145,12 +145,13 @@ class Graph extends Component {
 
   componentDidMount() {
     window.addEventListener('resize', () => {
-      let height = this.getHeight();
-      //height = height > 440 ? height : 440;
-      this.config.chart.height = height;
-      if(this.state.height !== height) {
-        this.setState({height: height});
-      }
+      // if(document.activeElement === document.body) {
+        let height = this.getHeight();
+        this.config.chart.height = height;
+        if(this.state.height !== height) {
+          this.setState({height: height});
+        }
+      // }
     });
   }
 
