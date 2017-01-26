@@ -9,6 +9,7 @@ form {
 
 #removeAllWrapper {
   overflow: auto;
+  border-radius: 2px;
   box-shadow: 0 5px 10px 0 rgba(46,61,73,.32);
 }
 
@@ -21,6 +22,7 @@ form {
   transition: all .2s ease;
   font-size: 14px;
   opacity: .3;
+  border: solid 1px #aaa;
 }
 
 #removeAll:hover, #removeAll:active {
@@ -39,6 +41,7 @@ input.searchInput, input.searchButton {
   color: #2b2833;
   background: #fefefe;
   transition: all .3s ease;
+  border-radius: 2px;
 }
 
 input:focus {
@@ -63,15 +66,17 @@ input.searchButton {
 }
 
 .msg {
-  background: #deb14a;
+  background: #2b2833;
   padding: 10px;
   font-size: 14px;
   text-align: center;
   font-weight: bold;
   border: none;
-  color: #fefefe;
+  color: #efefef;
   animation: warning .3s forwards;
   animation-timing-function: ease-out;
+  border-radius: 2px;
+  box-shadow: 0 10px 15px 0 rgba(46,61,73,.52);
 }
 
 @keyframes warning {

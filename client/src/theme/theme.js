@@ -35,7 +35,7 @@ export default function setTheme(Highcharts) {
      },
      subtitle: {
         style: {
-           color: '#efefef',
+          color: '#efefef',
         }
      },
      xAxis: {
@@ -74,14 +74,14 @@ export default function setTheme(Highcharts) {
         }
      },
      tooltip: {
-       backgroundColor: '#2b2833',
+       backgroundColor: '#efefef',
         useHTML: true,
         style: {
-           color: '#aaa'
+           color: '#242128'
         },
-        borderRadius: '2',
-        borderColor: '#666',
-        borderWidth: 2,
+        borderRadius: '5',
+        borderColor: '#aaa',
+        borderWidth: 0,
         followTouchMove: true
      },
      plotOptions: {
@@ -152,7 +152,7 @@ export default function setTheme(Highcharts) {
         buttonTheme: {
            fill: 'rgba(255,255,255,0.08)',
            stroke: '#eee',
-           r: 0,
+           r: 2,
            style: {
               color: '#aaa'
            },

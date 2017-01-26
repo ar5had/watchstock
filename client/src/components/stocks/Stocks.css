@@ -1,8 +1,9 @@
 .stock {
-  background: #2b2833;
+  background: #fefefe;
   padding: 10px;
   position: relative;
   transition: opacity .2s ease;
+  border-radius: 2px;
 }
 
 .stock > h4 {
@@ -12,12 +13,12 @@
 
 .stock > h4, .stock > p {
   margin: 10px 0;
-  color: #efefef;
+  color: #2b2833;
   word-wrap: break-word;
 }
 
 .stock > p {
-  color: #aaa;
+  color: rgba(43, 40, 51, .6);
   font-size: 15px;
 }
 
@@ -52,6 +53,7 @@
   opacity: 0;
   animation: new-item-animation .3s linear forwards;
   box-shadow: 0 10px 15px 0 rgba(46,61,73,.52);
+  border-radius: 2px;
 }
 
 .stockWrapper:hover {

@@ -8,6 +8,10 @@
   white-space: normal !important;
 }
 
+.highcharts-label.highcharts-tooltip {
+  box-shadow: 0 10px 15px 0 rgba(46,61,73,.52);
+}
+
 #graph {
   position: relative;
   margin: 0 auto;
@@ -15,6 +19,7 @@
   background: #2b2833;
   padding: 15px 10px 10px 10px;
   min-height: 425px;
+  border-radius: 2px;
 }
 
 .highcharts-crosshair {
