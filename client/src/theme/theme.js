@@ -87,7 +87,7 @@ export default function setTheme(Highcharts) {
      plotOptions: {
         series: {
           animation: {
-            duration: 1000,
+            duration: 500,
             easing: 'easeOutBounce'
           },
           dataLabels: {
@@ -96,13 +96,13 @@ export default function setTheme(Highcharts) {
           marker: {
             lineColor: '#2b2833'
           },
-          lineWidth: 1.5,
+          lineWidth: 0,
           states: {
             hover: {
-              lineWidth: 1.5
+              lineWidth: 1
             }
-          }
-          //lineColor: 'rgba(0,0,0,0)'
+          },
+        //  lineColor: 'rgba(0,0,0,0)'
         }
      },
      legend: {

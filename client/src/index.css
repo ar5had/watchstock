@@ -30,6 +30,8 @@ body.is-active{
 
 .bodyWrapper {
   margin: 20px;
+  box-sizing: content-box !important;
+  height: calc(100vh - 110px);
 }
 
 .loader {

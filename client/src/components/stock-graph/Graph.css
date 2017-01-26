@@ -18,7 +18,7 @@
   box-shadow: 0 0 20px rgba(0,0,0,.3);
   background: #2b2833;
   padding: 15px 10px 10px 10px;
-  min-height: 425px;
+  height: 100%;
   border-radius: 2px;
 }
 

@@ -11,7 +11,15 @@ setTheme(Highcharts);
 class Graph extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      height: 0,
+      isLoading: true,
+      data: []
+    };
     this.config = {
+      chart: {
+        height: this.getHeight()
+      },
       rangeSelector: {
         selected: 1
       },
@@ -20,11 +28,10 @@ class Graph extends Component {
       },
       series: []
     };
+  }
 
-    this.state = {
-      isLoading: true,
-      data: []
-    }
+  getHeight() {
+    return (window.innerHeight - 130);
   }
 
   getSeriesData(name, data, i) {
@@ -125,7 +132,7 @@ class Graph extends Component {
       return <div className="main-loader" />
     } else if(this.state.data.length > 0) {
       return <ReactHighstock config={this.config}
-                domprops={{id: "graph"}} />;
+              domprops={{id: "graph"}} ref="chart"/>;
     } else {
       return  (<div className="noStockContent">
                 <img src={image} alt="stock"/>
@@ -134,6 +141,17 @@ class Graph extends Component {
                 </h2>
               </div>);
     }
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', () => {
+      let height = this.getHeight();
+      //height = height > 440 ? height : 440;
+      this.config.chart.height = height;
+      if(this.state.height !== height) {
+        this.setState({height: height});
+      }
+    });
   }
 
   render() {
