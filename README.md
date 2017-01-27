@@ -6,7 +6,6 @@ A full stack js app for stock-market enthusiasts.
 * add socket into app - I
 * add notification feature - I
 * add a feature like `a moving average per week over 6 months` for stocks to present a more meaningful data.
-* add dollar sign to stock price in tooltip and yaxis
 * remove viewport height bug when keyboard opens on android and landscape mode 
 ## problems
 * outline question

@@ -5,6 +5,7 @@ form {
 .searchInput {
   width: 75%;
   box-shadow: 0 5px 10px 0 rgba(46,61,73,.32);
+  -moz-outline-radius: 2px;
 }
 
 #removeAllWrapper {

@@ -19,7 +19,7 @@ export default function setTheme(Highcharts) {
      chart: {
         backgroundColor: null,
         style: {
-           fontFamily: '\'Courier Prime\', monospace',
+           fontFamily: '\'Montserrat\', monospace',
            fontWeight: 'normal',
            fontStyle: 'normal',
            color: '#aaa'
@@ -28,14 +28,14 @@ export default function setTheme(Highcharts) {
      },
      title: {
         style: {
-           color: '#efefef',
-           fontSize: '20px',
+           color: '#fefefe',
+           fontSize: '18px',
            fontWeight: 'bold'
         }
      },
      subtitle: {
         style: {
-          color: '#efefef',
+          color: '#fefefe',
         }
      },
      xAxis: {
@@ -74,7 +74,10 @@ export default function setTheme(Highcharts) {
         }
      },
      tooltip: {
-       backgroundColor: '#efefef',
+       animation: true,
+       valuePrefix: '$',
+       valueSuffix: ' USD',
+       backgroundColor: '#fefefe',
         useHTML: true,
         style: {
            color: '#242128'
@@ -158,14 +161,14 @@ export default function setTheme(Highcharts) {
            },
            states: {
               hover: {
-                 fill: '#ddd',
+                 fill: '#fefefe',
                  stroke: '#aaa',
                  style: {
                     color: '#2b2833'
                  }
               },
               select: {
-                 fill: '#ddd',
+                 fill: '#fefefe',
                  stroke: '#2b2833',
                  style: {
                     color: '#2b2833'
@@ -179,10 +182,11 @@ export default function setTheme(Highcharts) {
         inputStyle: {
            backgroundColor: '#2b2833',
            color: '#ccc',
-           outline: 'rgba(0,0,0,0)'
+           outline: 'rgba(0,0,0,0)',
+           borderWidth: '2px'
         },
         labelStyle: {
-           color: '#efefef',
+           color: '#fefefe',
            fontWeight: 'bold'
         }
      },

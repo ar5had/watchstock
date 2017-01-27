@@ -25,6 +25,7 @@ class Header extends Component {
         </h3>
 
         <button id="toggleButton" className="hamburger hamburger--spin" type="button" onClick={this.toggle.bind(this)}>
+          <span className="hide-sm">Menu</span> 
           <span className="hamburger-box">
             <span className="hamburger-inner"></span>
           </span>

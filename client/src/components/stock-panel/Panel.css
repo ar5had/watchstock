@@ -21,6 +21,10 @@
 
 h3.panel {
   text-align: center;
-  padding: 0 0px 18px 0px;
-  border-bottom: solid 2px;
+  margin: 23px auto 20px auto;
+  padding: 0 0px 20px 0px;
+  border-bottom: solid 3px;
+  line-height: 1;
+  font-size: 17px;
+  font-weight: bold;
 }

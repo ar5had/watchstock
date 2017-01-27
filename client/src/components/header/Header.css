@@ -8,7 +8,7 @@
   display: inline-block;
   float: left;
   margin: 20px auto;
-  font-size: 21px;
+  font-size: 20px;
   line-height: 1;
 }
 
@@ -22,6 +22,20 @@ button:focus {
 
 button::-moz-focus-inner {
   border: 0;
+}
+
+#toggleButton {
+  line-height: 20px;
+}
+
+.hide-sm {
+  margin-right: 10px;
+  font-weight: bold;
+  font-weight: 17px;
+}
+
+.hide-sm, .hamburger-box {
+  vertical-align: middle;
 }
 
 /*hamburger icon css*/
@@ -106,5 +120,5 @@ button::-moz-focus-inner {
     transition: bottom 0.1s ease-out, transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-  background: #efefef;
+  background: #fefefe;
 }
