@@ -63,12 +63,25 @@ class SearchBar extends Component {
     }
   }
 
+  // Graph dimension is dependent on viewport height.
+  // This method restricts resiszing of graph when android's keyboard is opened
+  inputFocus() {
+    const graphWrapper = document.querySelector(".wrapper");
+    graphWrapper.style.height = `${graphWrapper.offsetHeight}px`;
+  }
+
+  inputBlur() {
+    const graphWrapper = document.querySelector(".wrapper");
+    graphWrapper.style.height = "100%";
+  }
+
   render() {
     return (
       <div id="searchBar" className={this.props.classes}>
         <form onSubmit={this.makexhr.bind(this)} id="addStockForm">
-          <input name="searchInput" type="text" className="searchInput"
-            placeholder="Stock Code"
+          <input name="searchInput" type="text"
+            className="searchInput" onFocus={this.inputFocus.bind(this)}
+            placeholder="Stock Code" onBlur={this.inputBlur.bind(this)}
             ref={
               input => {
                 this.textInput = input;

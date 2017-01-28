@@ -12,7 +12,7 @@ class Graph extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      height: 0,
+      height: this.getHeight(),
       isLoading: true,
       data: []
     };
@@ -145,13 +145,16 @@ class Graph extends Component {
 
   componentDidMount() {
     window.addEventListener('resize', () => {
-      // if(document.activeElement === document.body) {
+      // On Android mobile phones, focussed input will open keyboard
+      // which will change viewport height
+      alert(window.orientation);
+      if(document.activeElement !== document.querySelector(".searchInput")) {
         let height = this.getHeight();
         this.config.chart.height = height;
         if(this.state.height !== height) {
           this.setState({height: height});
         }
-      // }
+      }
     });
   }
 
