@@ -147,9 +147,9 @@ class Graph extends Component {
     window.addEventListener('resize', () => {
       // On Android mobile phones, focussed input will open keyboard
       // which will change viewport height
-      alert(window.orientation);
       if(document.activeElement !== document.querySelector(".searchInput")) {
         let height = this.getHeight();
+        height = height > 270 ? height : 270;
         this.config.chart.height = height;
         if(this.state.height !== height) {
           this.setState({height: height});
