@@ -43,7 +43,8 @@
     font-size: 25px;
     max-width: 450px;
     color: #efefef;
-    margin: auto
+    margin: auto;
+    text-transform: none !important;
 }
 
 @keyframes glow {
