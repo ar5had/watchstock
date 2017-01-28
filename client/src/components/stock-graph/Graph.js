@@ -137,7 +137,7 @@ class Graph extends Component {
       return  (<div className="noStockContent">
                 <img src={image} alt="stock"/>
                 <h2 className="noStockHeading">
-                  No Stock added! To add stock, open sidebar and add stock.
+                  No Stock added! To add stock, open sidemenu and add stock.
                 </h2>
               </div>);
     }
