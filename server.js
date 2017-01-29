@@ -3,19 +3,17 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const socketServer = require('http').Server(app);
-const io = require('socket.io')(socketServer);
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 const Stock = require('./models/stock.js');
 const routes = require('./app/routes.js');
+const port = process.env.PORT;
 
 // loads all custom environments variables
 if (process.env.NODE_ENV !== "production") {
   require('dotenv').config();
 }
-
-socketServer.listen(process.env.SOCKET_PORT || 3002);
-app.set('port', (process.env.PORT || 3001));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -37,12 +35,12 @@ var options = {
   }
 };
 mongoose.connect(process.env.MONGO_URI, options, err => {
-    if(err) {
-      console.log(`Some error happened while connecting to db - ${err}`);
-    } else {
-      console.log(`db connected successfully!`);
-    }
-  });
+  if(err) {
+    console.log(`Some error happened while connecting to db - ${err}`);
+  } else {
+    console.log(`db connected successfully!`);
+  }
+});
 
 mongoose.Promise = global.Promise;
 var conn = mongoose.connection;
@@ -78,6 +76,6 @@ conn.once('open', function() {
   })
 });
 
-app.listen(app.get('port'), () => {
-  console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
+http.listen(port, () => {
+  console.log(`Server running at ${port}!`); // eslint-disable-line no-console
 });
