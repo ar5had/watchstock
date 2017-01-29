@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
+import {socketConnect} from 'socket.io-react';
 
 class Stock extends Component {
+
+  emitRemoveEvent(code) {
+    this.props.socket.emit('removeStock', code);
+  }
 
   render() {
     return (
@@ -13,9 +18,10 @@ class Stock extends Component {
           <h4>{this.props.code}</h4>
           <p>{this.props.description}</p>
           <button className="removeStockBtn"
+            ref={(node) => {this.removeButton = node;}}
             onClick={(e) => {
               e.target.parentNode.style.opacity = ".8";
-              this.props.removeStock(this.props.code);
+              this.emitRemoveEvent(this.props.code);
             }}
           >
             x
@@ -26,4 +32,4 @@ class Stock extends Component {
   }
 }
 
-export default Stock;
+export default socketConnect(Stock);

@@ -1,7 +1,10 @@
-const express = require('express');
+const app = require('express')();
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const socketServer = require('http').Server(app);
+const io = require('socket.io')(socketServer);
+
 const Stock = require('./models/stock.js');
 const routes = require('./app/routes.js');
 
@@ -10,9 +13,31 @@ if (process.env.NODE_ENV !== "production") {
   require('dotenv').config();
 }
 
-const app = express();
-
+socketServer.listen(process.env.SOCKET_PORT || 3002);
 app.set('port', (process.env.PORT || 3001));
+
+io.on('connection', function(socket) {
+  console.log('a user connected, id-' + socket.id);
+
+  socket.on('disconnect', function() {
+      console.log('a user disconnected, id-'  + socket.id);
+  })
+
+  socket.on('removeStock', (code) => {
+    io.emit("removeStock",code);
+  });
+
+  socket.on('removeAllStock', () => {
+    io.emit("removeAllStock");
+  });
+
+  socket.on('addStock', (data) => {
+  // using broadcast because transfering data(which can be of quite a big size)
+  // transfer data to all clients to all other clients except the one client
+  // upon which this method is called.
+    socket.broadcast.emit("addStock", data);
+  });
+})
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

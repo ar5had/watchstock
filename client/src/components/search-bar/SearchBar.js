@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {socketConnect} from 'socket.io-react';
+
 import './SearchBar.css';
 
 
@@ -18,6 +20,10 @@ class SearchBar extends Component {
                             Stock already exists!
                           </div>);
     this.loader = (<div className="loader marB" />);
+  }
+
+  emitRemoveAllEvent(code) {
+    this.props.socket.emit('removeAllStock');
   }
 
   makexhr(e) {
@@ -46,12 +52,15 @@ class SearchBar extends Component {
           this.setState({
             message: this.stockExistsMsg
           });
+          throw new Error(response);
         } else {
           this.setState({
             message: this.wrongCodeMsg
           });
+          throw new Error(response);
         }
       }).then(data => {
+        this.props.socket.emit("addStock",data);
         this.props.addStock(data);
         this.textInput.value = "";
         this.setState({
@@ -99,7 +108,7 @@ class SearchBar extends Component {
                 elem => {
                     elem.style.opacity = ".8";
                 });
-              this.props.removeAllStock();
+              this.emitRemoveAllEvent();
             }
           }>
             Remove All
@@ -117,4 +126,4 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+export default socketConnect(SearchBar);

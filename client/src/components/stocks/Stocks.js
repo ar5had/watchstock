@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import {socketConnect} from 'socket.io-react';
+
 import Stock from '../single-stock/stock';
 import './Stocks.css';
 
@@ -73,6 +75,17 @@ class Stocks extends Component {
     return stocks;
   }
 
+
+  componentDidMount() {
+    this.props.socket.on('removeStock', (code) => {
+      this.removeStock(code);
+    });
+
+    this.props.socket.on('removeAllStock', (code) => {
+      this.removeAllStock();
+    });
+  }
+
   render() {
     const stocks = this.getCurrentStocks();;
     return (
@@ -83,4 +96,4 @@ class Stocks extends Component {
   }
 }
 
-export default Stocks;
+export default socketConnect(Stocks);

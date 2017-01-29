@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {socketConnect} from 'socket.io-react';
 import SearchBar from '../search-bar/SearchBar';
 import Stocks from '../stocks/Stocks';
 import './Panel.css';
@@ -45,25 +46,30 @@ class Panel extends Component {
   }
 
   removeAllStock() {
-    this.refs.stocks.removeAllStock();
+    console.log(this.allStocks);
+    this.allStocks.removeAllStock();
   }
 
   componentWillMount() {
     this.getInitStocks();
+    this.props.socket.on("addStock", (data) => { this.addStock(data) })
   }
 
   render() {
     return (
       <div id="panel" className={this.props.classes}>
         <h3 className="panel">Add/Remove Stocks</h3>
+
         <SearchBar addStock={this.addStock.bind(this)}
           removeAllStock={this.removeAllStock.bind(this)}
           stockList={this.state.stocks.map(elem => elem.code)}/>
+
         <Stocks changeParentState={this.changeState.bind(this)}
-          stocks={this.state.stocks} ref="stocks"/>
+          stocks={this.state.stocks} />
+
       </div>
     );
   }
 }
 
-export default Panel;
+export default socketConnect(Panel);

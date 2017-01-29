@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './Graph.css';
 import setTheme from '../../theme/theme.js';
 import ReactHighstock from 'react-highcharts/ReactHighstock';
