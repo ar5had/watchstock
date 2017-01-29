@@ -16,29 +16,6 @@ if (process.env.NODE_ENV !== "production") {
 socketServer.listen(process.env.SOCKET_PORT || 3002);
 app.set('port', (process.env.PORT || 3001));
 
-io.on('connection', function(socket) {
-  console.log('a user connected, id-' + socket.id);
-
-  socket.on('disconnect', function() {
-      console.log('a user disconnected, id-'  + socket.id);
-  })
-
-  socket.on('removeStock', (code) => {
-    io.emit("removeStock",code);
-  });
-
-  socket.on('removeAllStock', () => {
-    io.emit("removeAllStock");
-  });
-
-  socket.on('addStock', (data) => {
-  // using broadcast because transfering data(which can be of quite a big size)
-  // transfer data to all clients to all other clients except the one client
-  // upon which this method is called.
-    socket.broadcast.emit("addStock", data);
-  });
-})
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
@@ -74,6 +51,30 @@ conn.on('error', console.error.bind(console, 'connection error:'));
 conn.once('open', function() {
   // Routes
   app.use('/', routes);
+
+  // Socket Events
+  io.on('connection', function(socket) {
+    console.log('a user connected, id-' + socket.id);
+
+    socket.on('disconnect', function() {
+        console.log('a user disconnected, id-'  + socket.id);
+    })
+
+    socket.on('removeStock', (code) => {
+      io.emit("removeStock",code);
+    });
+
+    socket.on('removeAllStock', () => {
+      io.emit("removeAllStock");
+    });
+
+    socket.on('addStock', (data) => {
+    // using broadcast because transfering data(which can be of quite a big size)
+    // transfer data to all clients to all other clients except the one client
+    // upon which this method is called.
+      socket.broadcast.emit("addStock", data);
+    });
+  })
 });
 
 app.listen(app.get('port'), () => {

@@ -6,7 +6,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // connect to socket
-const socket = io.connect('http://localhost:3002');
+const protocol = `${window.location.protocol}`;
+const hn =`${window.location.hostname}`;
+const url = `${protocol}//${hn}:${process.env.REACT_APP_SOCKET_PORT}`;
+const socket = io.connect(url);
+console.log(url);
 
 ReactDOM.render(
   <SocketProvider socket={socket}>
