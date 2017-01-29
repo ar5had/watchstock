@@ -8,7 +8,6 @@ const io = require('socket.io')(http);
 
 const Stock = require('./models/stock.js');
 const routes = require('./app/routes.js');
-const port = process.env.PORT;
 
 // loads all custom environments variables
 if (process.env.NODE_ENV !== "production") {
@@ -68,7 +67,7 @@ conn.once('open', function() {
     });
 
     socket.on('addStock', (data) => {
-    // using broadcast because transfering data(which can be of quite a big size)
+    // using broadcast because transfering data(which can be of quite big)
     // transfer data to all clients to all other clients except the one client
     // upon which this method is called.
       socket.broadcast.emit("addStock", data);
@@ -76,6 +75,7 @@ conn.once('open', function() {
   })
 });
 
+const port = process.env.PORT;
 http.listen(port, () => {
   console.log(`Server running at ${port}!`); // eslint-disable-line no-console
 });

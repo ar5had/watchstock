@@ -6,7 +6,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // connect to socket
-const socket = io.connect();
+let url = "";
+if(process.env.NODE_ENV !== "production") {
+  url = `${window.location.hostname}:${process.env.REACT_APP_SOCKET_PORT}`;
+}
+const socket = io.connect(url);
 
 ReactDOM.render(
   <SocketProvider socket={socket}>
