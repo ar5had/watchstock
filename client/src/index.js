@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom';
 const protocol = `${window.location.protocol}`;
 const hn =`${window.location.hostname}`;
 const url = `${protocol}//${hn}:${process.env.REACT_APP_SOCKET_PORT}`;
-const socket = io.connect('http://localhost');
+const socket = io.connect(window.location.hostname);
 console.log(url);
 
 ReactDOM.render(
