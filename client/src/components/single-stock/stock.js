@@ -5,6 +5,7 @@ class Stock extends Component {
 
   emitRemoveEvent(code) {
     this.props.socket.emit('removeStock', code);
+    this.props.socket.emit('notify', {name: 'REMOVE', code: code});
   }
 
   render() {

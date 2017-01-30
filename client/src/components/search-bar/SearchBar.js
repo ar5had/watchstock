@@ -24,6 +24,7 @@ class SearchBar extends Component {
 
   emitRemoveAllEvent(code) {
     this.props.socket.emit('removeAllStock');
+    this.props.socket.emit('notify', {name: 'REMOVE_ALL'});
   }
 
   makexhr(e) {
@@ -61,6 +62,7 @@ class SearchBar extends Component {
         }
       }).then(data => {
         this.props.socket.emit("addStock",data);
+        this.props.socket.emit('notify', {name: 'ADD', code: data.code});
         this.props.addStock(data);
         this.textInput.value = "";
         this.setState({

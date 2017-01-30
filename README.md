@@ -1,10 +1,2 @@
 # stock-market-app
-A full stack js app for stock-market enthusiasts.
-
-
-## todos
-* add notification feature - I
-* add a feature like `a moving average per week over 6 months` for stocks to present a more meaningful data.
-
-## problems
-* outline question
+WatchStock is full stack MERN web app where user can view a graph displaying the recent trend lines for each added stock. User can add new stocks by their symbol name and can remove stocks as well. User will see changes in real-time when any other user adds or removes a stock.

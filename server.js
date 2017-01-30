@@ -72,6 +72,23 @@ conn.once('open', function() {
     // upon which this method is called.
       socket.broadcast.emit("addStock", data);
     });
+
+    socket.on('notify', ({name, code}) => {
+      switch (name) {
+        case 'REMOVE_ALL':
+          socket.broadcast.emit("notify", `All stocks have been removed by some user!`);
+          break;
+        case 'REMOVE':
+          socket.broadcast.emit("notify", `${code} stock has been removed by some user!`);
+          break;
+        case 'ADD':
+          socket.broadcast.emit("notify", `${code} stock has been added by some user!`);
+          break;
+        default:
+          console.error("Wrong event name send to notify!");
+          break;
+      }
+    });
   })
 });
 
