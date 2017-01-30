@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: 'Montserrat', monospace;
     outline: 1px solid transparent;
+    word-spacing: 2px;
 }
 
 html, body, #root, .wrapper {
@@ -118,10 +119,13 @@ body.is-active {
     .hide-sm {
       display: none;
     }
+    .notificationBox > * {
+      font-size: 13px;
+    }
 }
 
 @media (orientation: landscape) {
-    .wrapper {
+    .wrapper, #panel {
       min-height: 400px;
     }
 }
