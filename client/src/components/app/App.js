@@ -5,6 +5,7 @@ import Graph from '../stock-graph/Graph.js';
 import Header from '../header/Header.js';
 import Panel from '../stock-panel/Panel.js';
 import Notifier from '../notification-box/Notifier.js';
+import Author from '../credits/Author.js';
 
 import 'bootstrap-grid';
 // syncronously load font first
@@ -28,6 +29,7 @@ class App extends Component {
         </div>
         <Panel updateGraph={this.updateGraph.bind(this)}/>
         <Notifier />
+        <Author />
       </div>
     );
   }
