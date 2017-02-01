@@ -3,9 +3,8 @@
 }
 
 .highcharts-tooltip span {
-    width: 140px !important;
-    overflow: auto;
-    white-space: normal !important;
+    min-width: 140px !important;
+    white-space: nowrap !important;
 }
 
 .highcharts-label.highcharts-tooltip {

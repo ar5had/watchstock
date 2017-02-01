@@ -5,6 +5,7 @@
   font-size: 11px;
   color: #999;
   width: 230px;
+  z-index: 10;
 }
 
 .authorCredits img {

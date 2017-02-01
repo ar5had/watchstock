@@ -23,7 +23,7 @@ class Author extends Component {
     return (
       <div className="authorCredits">
         <img src={authorImage} alt="Arshad" />
-        <p>Tap for more cool projects!</p>
+        <p>Tap to checkout more cool projects!</p>
       </div>
     );
   }
