@@ -21,7 +21,7 @@ body {
     transition-duration: .4s;
     transition-timing-function: ease;
     position: relative;
-    overflow-y: auto;
+    overflow-y: hidden;
     height: 100%;
 }
 
@@ -55,6 +55,7 @@ body.is-active {
     background: #2b2833;
     height: calc(100% - 102px);
     position: relative;
+    z-index: -5;
 }
 
 .loader {

@@ -1,0 +1,85 @@
+.authorCredits {
+  position: absolute;
+  left: 5px;
+  bottom: 7px;
+  font-size: 11px;
+  color: #999;
+  width: 230px;
+}
+
+.authorCredits img {
+  border-radius: 50%;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, .52);
+  height: 40px;
+  width: 40px;
+  float: left;
+  z-index: 9999;
+  opacity: 0;
+  display: inline-block;
+  animation: pop .3s 5s cubic-bezier(0.4, 0, 1, 0.65) forwards;
+  cursor: pointer;
+}
+
+.authorCredits>p.slide {
+  animation: slide .5s .4s cubic-bezier(.14,.25,.52,1.56) forwards;
+  cursor: pointer;
+}
+
+.authorCredits a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.authorCredits>p {
+  visibility: hidden;
+  line-height: 25px;
+  margin-left: 5px;
+  background: #fefefe;
+  padding: 0 20px;
+  border-radius: 40px;
+  position: absolute;
+  left: 20px;
+  z-index: -1;
+  width: auto;
+  color: #242128;
+  white-space: nowrap;
+  bottom: -4px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, .52);
+  cursor: pointer;
+}
+
+a:focus {
+  text-decoration: none;
+}
+
+@keyframes pop {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    80% {
+        opacity: .8;
+        transform: scale(1.4);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slide {
+  0% {
+      visibility: visible;
+      opacity: 0;
+      transform: translateX(-20px);
+  }
+
+  100% {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(0);
+      cursor: pointer;
+  }
+}
