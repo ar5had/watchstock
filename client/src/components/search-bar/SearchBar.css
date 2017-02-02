@@ -30,6 +30,7 @@ form {
   padding: 10px;
   transition: background .2s linear;
   cursor: pointer;
+  border-left: solid 2px;
 }
 
 .suggestions > li:hover {
@@ -55,6 +56,13 @@ li > span.description {
   margin-top: 10px;
   color: rgba(43, 40, 51, .6);
   font-size: 12px;
+}
+
+.borderList {
+  padding: 2px 0;
+  background: #eee;
+  position: absolute;
+  bottom: 0;
 }
 
 .searchInput {

@@ -58,7 +58,7 @@ class Form extends Component {
         this.props.socket.emit("addStock",data);
         this.props.socket.emit('notify', {name: 'ADD', code: data.code});
         this.props.addStock(data);
-        this.textInput.value = "";
+        this.setState({searchText: ""});
         this.props.changeParentState({
           message: ""
         });
@@ -93,7 +93,10 @@ class Form extends Component {
     this.setState({
       searchText: text
     }, () => {
-      this.displaySuggestions();
+      const count = this.state.searchText.length;
+      if(count > 1) {
+        this.displaySuggestions();
+      }
     });
   }
 
