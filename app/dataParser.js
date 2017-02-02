@@ -1,7 +1,7 @@
 // this file returns stock data that can be accepted by hightStock api
 
 const parseStockData = (data, id, hide) => {
-  var name = data.dataset.name.split(" ");
+  let name = data.dataset.name.split(" ");
   name = name.slice(0, name.length - 5).join(" ");
   name = name.slice(0, name.length - 1);
 

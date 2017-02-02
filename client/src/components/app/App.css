@@ -16,12 +16,7 @@ body {
     margin: 0;
     color: #fefefe;
     position: relative;
-    overflow-x: hidden;
-    transition-property: transform;
-    transition-duration: .4s;
-    transition-timing-function: ease;
-    position: relative;
-    overflow-y: hidden;
+    overflow: hidden;
     height: 100%;
 }
 
@@ -30,17 +25,30 @@ button, h2, h3, input[type="submit"] {
   font-weight: bold;
 }
 
-body.is-active {
-    transform: translateX(-260px);
+.wrapper.is-active {
+  transform: translateX(-260px);
 }
 
 .wrapper {
     position: absolute;
     width: 100%;
+    transition-property: transform;
+    transition-duration: .4s;
+    transition-timing-function: ease;
 }
 
 .marB {
     margin-bottom: 20px;
+}
+
+.padS {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.marS {
+  margin-left: 20px !important;
+  margin-right: 20px !important;
 }
 
 .row {
@@ -94,8 +102,16 @@ body.is-active {
     .bodyWrapper {
         margin: 15px;
     }
-    #header, #panel {
+    #header{
         padding: 0 15px;
+    }
+    .marS {
+      margin-left: 15px !important;
+      margin-right: 15px !important;
+    }
+    .padS {
+      padding-left: 15px;
+      padding-right: 15px;
     }
     form, .messageArea {
         margin-bottom: 15px;

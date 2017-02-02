@@ -1,6 +1,8 @@
 const routes = require('express').Router();
 const ASQ = require('asynquence');
 const mongoose = require('mongoose');
+
+const codes = require('../stock_codes/codes.json');
 const Stock = require('../models/stock.js');
 const apiReq = require('./api.js');
 const getParsedStockData = require('./dataParser.js');
@@ -144,5 +146,8 @@ routes.delete('/stock/removeAll', (req, res) => {
   });
 });
 
+routes.get('/codes', (req, res) => {
+  res.json(codes);
+});
 
 module.exports = routes;

@@ -89,7 +89,7 @@ class Stocks extends Component {
   render() {
     const stocks = this.getCurrentStocks();;
     return (
-      <div id="stocks" className={this.props.classes}>
+      <div id="stocks" className="marS">
         {stocks}
       </div>
     );
