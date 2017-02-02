@@ -83,14 +83,18 @@ class Form extends Component {
   hideSuggestions() {
     const suggestions = document.querySelector('.suggestions');
     suggestions.classList.remove("show");
+    setTimeout(() => {
+      this.setState({suggestions: []});
+    }, 400);
   }
 
   handleInputChange(e, code) {
-    this.displaySuggestions();
     const text = (e === null) ? code : e.target.value;
     this.setState({
       searchText: text
-    }, () => {console.log("callback called");});
+    }, () => {
+      this.displaySuggestions();
+    });
   }
 
   displaySuggestions() {
@@ -129,7 +133,7 @@ class Form extends Component {
   findMatches(wordToMatch, codes) {
     return codes.filter(stock => {
       const regex = new RegExp(wordToMatch, 'gi');
-      return stock.description.match(regex);
+      return stock.code.match(regex) || stock.description.match(regex);
     });
   };
 
@@ -141,6 +145,10 @@ class Form extends Component {
     })
     .then(data => {
       this.codes.push(...data);
+    });
+
+    window.addEventListener('click', (e) => {
+      this.hideSuggestions();
     });
   }
 
