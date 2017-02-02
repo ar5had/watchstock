@@ -13,6 +13,7 @@
   padding: 0 20px;
   visibility: visible;
   overflow-x: hidden;
+  z-index: 999999999;
 }
 
 #panel.is-active {

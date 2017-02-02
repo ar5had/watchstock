@@ -16,12 +16,7 @@ body {
     margin: 0;
     color: #fefefe;
     position: relative;
-    overflow-x: hidden;
-    transition-property: transform;
-    transition-duration: .4s;
-    transition-timing-function: ease;
-    position: relative;
-    overflow-y: hidden;
+    overflow: hidden;
     height: 100%;
 }
 
@@ -30,13 +25,16 @@ button, h2, h3, input[type="submit"] {
   font-weight: bold;
 }
 
-body.is-active {
-    transform: translateX(-260px);
+.wrapper.is-active {
+  transform: translateX(-260px);
 }
 
 .wrapper {
     position: absolute;
     width: 100%;
+    transition-property: transform;
+    transition-duration: .4s;
+    transition-timing-function: ease;
 }
 
 .marB {
