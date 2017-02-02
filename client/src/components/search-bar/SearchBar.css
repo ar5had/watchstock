@@ -1,5 +1,60 @@
 form {
   margin-bottom: 20px;
+  position: relative;
+}
+
+.suggestions {
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  z-index: 999999;
+  width: 100%;
+  box-shadow: 0 5px 10px 0 rgba(46,61,73,.52);
+  max-height: 350px;
+  opacity: 0;
+  transition: visibility 0s linear 0.1s, opacity 0.1s linear;
+  overflow-y: auto;
+  visibility: hidden;
+}
+
+.suggestions.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.suggestions > li {
+  background: #fefefe;
+  border: solid 1px #eee;
+  border-left: none;
+  border-right: none;
+  padding: 10px;
+  transition: background .2s linear;
+  cursor: pointer;
+}
+
+.suggestions > li:hover {
+  background: #fafafa;
+}
+
+.suggestions > li.li-suggestion:hover {
+  background: #fefefe;
+  cursor: auto;
+}
+
+.suggestions > li.li-suggestion {
+  font-size: 12px;
+  color: #ccc;
+}
+
+li > span{
+  display: block;
+  font-size: 15px;
+}
+
+li > span.description {
+  margin-top: 10px;
+  color: rgba(43, 40, 51, .6);
+  font-size: 12px;
 }
 
 .searchInput {

@@ -58,7 +58,7 @@ class Panel extends Component {
   render() {
     return (
       <div id="panel" className={this.props.classes}>
-        <h3 className="panel">Add/Remove Stocks</h3>
+        <h3 className="panel marS">Add/Remove Stocks</h3>
 
         <SearchBar addStock={this.addStock.bind(this)}
           removeAllStock={this.removeAllStock.bind(this)}
