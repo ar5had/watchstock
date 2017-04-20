@@ -10,7 +10,7 @@ const Stock = new Schema({
     hide: Boolean
 });
 
-// using old function so that `this` is bound
+// using es5 style function syntax so that `this` is bound
 Stock.pre('save', function(next) {
   // get unique id
   var id = new Date().getTime().toString();
